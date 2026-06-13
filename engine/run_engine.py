@@ -89,6 +89,10 @@ def strip_empty_placeholders(html_content: str) -> tuple:
     while changed:
         changed = False
         for el in soup.find_all(['div', 'span']):
+            if el.decomposed:
+                # Already removed as a descendant of an element decomposed
+                # earlier in this pass.
+                continue
             if el.find(['svg', 'img']):
                 continue
             if el.get_text(strip=True):

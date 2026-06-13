@@ -33,6 +33,15 @@ function getOutputRootDir(): string {
   return path.join(app.getPath('userData'), 'PolyNovea Content');
 }
 
+// All generated content lives under the output root. IPC handlers that read or
+// open arbitrary paths supplied by the renderer must stay confined to this
+// directory to prevent path traversal (e.g. "../../some/other/file").
+function isWithinOutputRoot(targetPath: string): boolean {
+  const root = path.resolve(getOutputRootDir());
+  const resolved = path.resolve(targetPath);
+  return resolved === root || resolved.startsWith(root + path.sep);
+}
+
 
 // =========================================================
 // Settings & Credentials IPC (OS-backed encryption)
@@ -223,9 +232,19 @@ ipcMain.handle('slides:get', async (_, revisionId: string) => {
 // Outputs & Artifacts IPC
 // =========================================================
 
+function escapeHtml(text: string): string {
+  return text
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+}
+
 function compileMarkdownToHtml(markdown: string): string {
-  let html = markdown;
-  
+  // Escape raw HTML/script content from the LLM-generated markdown before
+  // applying markdown transforms, so any literal "<script>" etc. renders as
+  // text rather than being injected into the output document.
+  let html = escapeHtml(markdown);
+
   // Code blocks
   html = html.replace(/```([\s\S]*?)```/g, (match, code) => {
     return `<pre><code>${code.trim()}</code></pre>`;
@@ -366,6 +385,10 @@ ipcMain.handle('projects:get-revision-dir', async (_, projectId: string, revisio
 
 ipcMain.handle('outputs:read-file', async (_, filePath: string) => {
   try {
+    if (!isWithinOutputRoot(filePath)) {
+      console.error(`Refusing to read file outside output directory: ${filePath}`);
+      return '';
+    }
     if (fs.existsSync(filePath)) {
       return fs.readFileSync(filePath, 'utf-8');
     }
@@ -378,6 +401,10 @@ ipcMain.handle('outputs:read-file', async (_, filePath: string) => {
 
 ipcMain.handle('outputs:read-image-base64', async (_, filePath: string) => {
   try {
+    if (!isWithinOutputRoot(filePath)) {
+      console.error(`Refusing to read image outside output directory: ${filePath}`);
+      return '';
+    }
     if (fs.existsSync(filePath)) {
       const buffer = fs.readFileSync(filePath);
       return `data:image/png;base64,${buffer.toString('base64')}`;
@@ -391,6 +418,10 @@ ipcMain.handle('outputs:read-image-base64', async (_, filePath: string) => {
 
 ipcMain.handle('outputs:read-file-base64', async (_, filePath: string, mimeType: string) => {
   try {
+    if (!isWithinOutputRoot(filePath)) {
+      console.error(`Refusing to read file outside output directory: ${filePath}`);
+      return '';
+    }
     if (fs.existsSync(filePath)) {
       const buffer = fs.readFileSync(filePath);
       return `data:${mimeType};base64,${buffer.toString('base64')}`;
@@ -403,12 +434,17 @@ ipcMain.handle('outputs:read-file-base64', async (_, filePath: string, mimeType:
 });
 
 ipcMain.handle('outputs:file-exists', async (_, filePath: string) => {
+  if (!isWithinOutputRoot(filePath)) return false;
   return fs.existsSync(filePath);
 });
 
 
 ipcMain.handle('outputs:open-folder', async (_, folderPath: string) => {
   try {
+    if (!isWithinOutputRoot(folderPath)) {
+      console.error(`Refusing to open folder outside output directory: ${folderPath}`);
+      return false;
+    }
     if (fs.existsSync(folderPath)) {
       await shell.openPath(folderPath);
       return true;
@@ -422,6 +458,10 @@ ipcMain.handle('outputs:open-folder', async (_, folderPath: string) => {
 
 ipcMain.handle('outputs:list-slides', async (_, slidesDirPath: string) => {
   try {
+    if (!isWithinOutputRoot(slidesDirPath)) {
+      console.error(`Refusing to list slides outside output directory: ${slidesDirPath}`);
+      return [];
+    }
     if (fs.existsSync(slidesDirPath)) {
       const files = fs.readdirSync(slidesDirPath);
       // Filter for slide PNGs (e.g. slide-01.png) and sort them alphabetically
@@ -451,8 +491,8 @@ ipcMain.handle('engine:run-diagnostics', async () => {
 
   // 1. Check Python
   try {
-    const { execSync } = require('child_process');
-    execSync(`"${pythonExe}" --version`);
+    const { execFileSync } = require('child_process');
+    execFileSync(pythonExe, ['--version']);
     results.pythonAvailable = true;
   } catch (err: any) {
     results.error = `Python not detected at ${pythonExe}. Error: ${err.message}`;
@@ -469,12 +509,12 @@ ipcMain.handle('engine:run-diagnostics', async () => {
 
   // 3. Check Playwright & Chromium
   try {
-    const { execSync } = require('child_process');
-    const testCmd = `"${pythonExe}" -c "from playwright.sync_api import sync_playwright; p = sync_playwright().start(); p.chromium.launch().close(); p.stop(); print('OK')"`;
-    const output = execSync(testCmd, {
+    const { execFileSync } = require('child_process');
+    const testScript = "from playwright.sync_api import sync_playwright; p = sync_playwright().start(); p.chromium.launch().close(); p.stop(); print('OK')";
+    const output = execFileSync(pythonExe, ['-c', testScript], {
       env: { ...process.env, PLAYWRIGHT_BROWSERS_PATH: path.join(app.getPath('userData'), 'playwright-browsers') }
     }).toString().trim();
-    
+
     if (output.includes('OK')) {
       results.playwrightAvailable = true;
       results.chromiumAvailable = true;

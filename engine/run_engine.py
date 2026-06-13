@@ -516,9 +516,26 @@ def main():
             elif args.mode == "reel":
                 try:
                     reel_script = json.loads(final_output)
-                except json.JSONDecodeError as e:
-                    log_error(f"Generated reel script is not valid JSON: {str(e)}")
-                    sys.exit(1)
+                except json.JSONDecodeError:
+                    # Model may have wrapped the JSON object with stray commentary
+                    # that the code-fence stripper didn't catch. Try to recover the
+                    # outermost JSON object before giving up.
+                    start = final_output.find('{')
+                    end = final_output.rfind('}')
+                    if start == -1 or end == -1 or end <= start:
+                        log_error(
+                            "Generated reel script is not valid JSON. "
+                            f"Output preview: {final_output[:300]!r}"
+                        )
+                        sys.exit(1)
+                    try:
+                        reel_script = json.loads(final_output[start:end + 1])
+                    except json.JSONDecodeError as e:
+                        log_error(
+                            f"Generated reel script is not valid JSON: {str(e)}. "
+                            f"Output preview: {final_output[:300]!r}"
+                        )
+                        sys.exit(1)
 
                 validation_errors = validate_reel_script(reel_script)
                 if validation_errors:

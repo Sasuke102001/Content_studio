@@ -1,6 +1,6 @@
 {
   "name": "polynovea-carousel-desktop",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "PolyNovea Carousel & Content Desktop App",
   "main": "dist/main/index.js",
   "author": "PolyNovea Team",

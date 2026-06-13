@@ -136,6 +136,7 @@ export function runPythonEngine(
         });
 
         let buffer = '';
+        let lastFailedMessage = '';
 
         child.stdout.on('data', (data) => {
           const dataStr = scrubSecrets(data.toString(), apiKeys);
@@ -149,6 +150,9 @@ export function runPythonEngine(
             if (!line.trim()) continue;
             try {
               const payload = JSON.parse(line);
+              if (payload.status === 'failed' && typeof payload.message === 'string') {
+                lastFailedMessage = payload.message;
+              }
               window.webContents.send('engine-progress', {
                 revisionId: params.revisionId,
                 action: params.action,
@@ -179,8 +183,9 @@ export function runPythonEngine(
               ? fs.readFileSync(stderrLogPath, 'utf-8').trim().split('\n').slice(-5).join('\n')
               : '';
             const scrubbedErrors = scrubSecrets(lastErrors, apiKeys);
+            const detail = lastFailedMessage || scrubbedErrors || '(no output captured)';
             reject(
-              new Error(`Sidecar process failed (Exit code: ${code}). Stderr:\n${scrubbedErrors}`)
+              new Error(`Sidecar process failed (Exit code: ${code}). ${detail}`)
             );
           }
         });

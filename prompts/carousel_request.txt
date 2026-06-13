@@ -1,0 +1,500 @@
+I want help generating a premium public-facing client capability document for Polynovea.
+
+This is NOT:
+- a startup pitch deck
+- a SaaS presentation
+- a generic AI deck
+- a keynote presentation
+- a hospitality analytics dashboard
+- a marketing agency presentation
+
+This IS:
+- a behavioral-commercial intelligence document
+- a customer acquisition and optimization framework presentation
+- a premium operational intelligence document
+- a structured editorial capability presentation
+- a commercial systems narrative
+
+The document should feel:
+- commercially intelligent
+- operationally mature
+- editorial
+- premium
+- restrained
+- atmospheric
+- behaviorally informed
+- strategically structured
+- highly readable
+
+NOT:
+- futuristic
+- dashboard-heavy
+- startup-like
+- cinematic for aesthetics alone
+- overloaded with technical jargon
+- visually generic
+
+##################################################
+CORE POSITIONING
+##################################################
+
+Polynovea studies how environments influence customer behavior and commercial outcomes.
+
+The Behavioral Intelligence Framework is designed to improve:
+- customer acquisition efficiency
+- audience alignment
+- retention behavior
+- venue atmosphere consistency
+- spending behavior
+- repeat visit conditions
+- live experience quality
+- operational refinement
+- revenue optimization
+
+The framework applies behavioral intelligence to help venues:
+- attract better-aligned audiences
+- improve retention conditions
+- optimize live experiences
+- engineer stronger commercial environments
+
+The goal is NOT:
+collecting more customer data.
+
+The goal IS:
+understanding how environments shape customer behavior and commercial performance over time.
+
+##################################################
+IMPORTANT POSITIONING CONTEXT
+##################################################
+
+The Behavioral Intelligence Framework is broader than hospitality alone.
+
+Live venue environments are currently being used as:
+- operational proving grounds
+- live behavioral ecosystems
+- high-density customer environments
+- operational validation surfaces
+
+The venue ecosystem acts as:
+- a real-world behavioral laboratory
+- a live testing environment
+- an operational intelligence surface
+
+The framework should NOT be presented as:
+- a review scraping system
+- a hospitality analytics platform
+- a nightlife SaaS product
+- a music-event company
+- a marketing agency
+
+Position it as:
+a behavioral intelligence infrastructure designed to improve acquisition, retention, and commercial optimization through environmental and behavioral understanding.
+
+##################################################
+CURRENT INFRASTRUCTURE
+##################################################
+
+Current operational validation includes:
+
+- 6,293 venue environments
+- 30,660 behavioral event records
+- operational coverage across Mumbai, SOBO, Navi Mumbai, and Thane
+
+Infrastructure includes:
+- behavioral event datasets
+- environmental observation systems
+- enriched commercial metadata
+- operational intelligence layers
+- live commercial validation environments
+
+The intelligence infrastructure continues expanding through:
+- additional commercial environments
+- behavioral observations
+- operational refinement
+- live validation systems
+
+IMPORTANT:
+
+Do NOT exaggerate scale using language such as:
+- massive AI system
+- revolutionary infrastructure
+- internet-scale intelligence
+- next-generation AI engine
+
+The positioning should feel:
+- grounded
+- operational
+- commercially mature
+- believable
+- continuously evolving
+
+##################################################
+VERY IMPORTANT LANGUAGE RULES
+##################################################
+
+Avoid language such as:
+- ontology systems
+- semantic infrastructure
+- signal mapping
+- predictive AI engine
+- latent intelligence systems
+- disruptive AI
+- next-generation intelligence architecture
+- revolutionary platform
+
+The language should feel:
+- observational
+- operational
+- commercially grounded
+- behaviorally intelligent
+- structured
+- premium
+- mature
+
+##################################################
+DOCUMENT STRUCTURE
+##################################################
+
+Generate:
+14–18 vertical editorial pages.
+
+The document must be divided into TWO clearly separated commercial sections.
+
+##################################################
+SECTION A
+Behavioral Intelligence Framework & Customer Acquisition
+##################################################
+
+This section explains:
+
+- how behavioral intelligence works
+- how environments influence customer behavior
+- how audience behavior leaves measurable patterns
+- how customer reviews contain behavioral context
+- how environmental signals become operational intelligence
+- how behavioral segmentation improves targeting
+- how audience-environment alignment improves acquisition quality
+- how the framework helps identify audiences naturally aligned with specific venue environments
+- how acquisition becomes more efficient through behavioral understanding
+
+The framework should be presented as:
+behaviorally-informed customer acquisition infrastructure.
+
+The commercial objective of this section is:
+
+- better-fit customers
+- improved targeting precision
+- higher retention probability
+- stronger audience alignment
+- stronger repeat visit conditions
+- improved customer quality
+- reduced acquisition mismatch
+
+This section should communicate:
+
+Behavioral Intelligence
+→ Audience Segmentation
+→ Environment Alignment
+→ Behavioral Targeting
+→ Customer Acquisition
+
+##################################################
+SECTION B
+Revenue Optimization & Show Engineering
+##################################################
+
+This section explains:
+
+- live environment observation
+- customer response tracking
+- retention optimization
+- atmosphere refinement
+- operational friction detection
+- spending behavior optimization
+- repeatable show structures
+- venue performance refinement
+- continuous learning loops
+- measurable commercial optimization systems
+
+The commercial objective of this section is:
+
+- stronger retention
+- improved spending behavior
+- improved repeat visits
+- stronger atmosphere consistency
+- optimized live experiences
+- more repeatable commercial outcomes
+
+This section should communicate:
+
+Live Observation
+→ Experience Measurement
+→ Friction Detection
+→ Environmental Optimization
+→ Revenue Improvement
+
+##################################################
+SECTION TRANSITION RULES
+##################################################
+
+The transition between SECTION A and SECTION B must be visually explicit.
+
+Use:
+- dedicated divider pages
+- large section typography
+- visual hierarchy shifts
+- compositional reset
+- environmental overlays
+- rhythm changes
+
+The document must NEVER feel like:
+one continuous abstract behavioral essay.
+
+The reader must always clearly understand:
+1. what the Behavioral Intelligence Framework is
+2. how acquisition improves
+3. how optimization systems work
+4. how commercial performance improves
+
+##################################################
+REFERENCE TEMPLATE GUIDANCE
+##################################################
+
+Use the provided reference presentation PDF as the PRIMARY structural and compositional guide.
+
+Match:
+- editorial pacing
+- hierarchy rhythm
+- layout sophistication
+- typography balance
+- information density
+- annotation structure
+- spacing behavior
+- operational document feel
+- compositional maturity
+
+The generated document should feel visually aligned with the reference presentation while adapting layouts dynamically to the new content.
+
+Do NOT:
+- duplicate layouts directly
+- repeat identical compositions
+- create obvious templates
+
+Use the reference as:
+a visual systems archetype.
+
+##################################################
+CLIENT PRESENTATION PALETTE
+##################################################
+
+Use ONLY this CLIENT PRESENTATION PALETTE.
+
+BACKGROUND:
+#F4F1EA
+
+ELEVATED SURFACE:
+#ECE7DD
+
+SECONDARY SURFACE:
+#E4DED2
+
+PRIMARY TEXT:
+#111111
+
+SECONDARY TEXT:
+#4B5563
+
+MUTED TEXT:
+#6B7280
+
+PRIMARY GOLD:
+#B89B5E
+
+MUTED GOLD:
+#8D7A50
+
+VIOLET ACCENT:
+#7C3AED
+
+BORDERS:
+rgba(17,17,17,0.08)
+
+The palette should feel:
+- calm
+- editorial
+- premium
+- dimensional
+- restrained
+- highly readable
+
+Avoid:
+- pure white backgrounds
+- harsh black contrast
+- cinematic dark-mode aesthetics
+- startup SaaS color systems
+- excessive purple usage
+
+##################################################
+VISUAL LANGUAGE
+##################################################
+
+The visual system should feel like:
+- premium editorial intelligence documentation
+- behavioral analysis systems
+- operational research reports
+- atmospheric commercial intelligence systems
+- structured observational infrastructure
+
+NOT:
+- startup decks
+- SaaS dashboards
+- generic AI decks
+- cinematic hero layouts
+- futuristic tech visuals
+
+##################################################
+VERY IMPORTANT VISUAL RULES
+##################################################
+
+The document must NOT become:
+- text-heavy
+- visually repetitive
+- visually flat
+- presentation-template-like
+- operationally dry
+
+Every page should contain:
+- layered visual systems
+- compositional hierarchy
+- operational overlays
+- structural abstractions
+- observational visual systems
+- environmental textures
+- intelligence-field overlays
+- metadata structures
+- asymmetric framing systems
+- topological line structures
+- resonance-field abstractions
+- operational flow structures
+- visual rhythm variation
+
+Use more:
+- visual layering
+- structured overlays
+- asymmetry
+- compositional tension
+- atmospheric systems
+- operational graphics
+- visual segmentation
+- layered information regions
+
+The visuals should feel:
+- premium
+- restrained
+- editorial
+- analytical
+- structural
+
+NOT:
+- decorative
+- flashy
+- futuristic
+- visually noisy
+
+##################################################
+TYPOGRAPHY RULES
+##################################################
+
+Use:
+- Clash Display for headings
+- Inter for body text
+
+Typography should feel:
+- premium
+- editorial
+- readable
+- structured
+- presentation-grade
+
+IMPORTANT:
+
+Increase typography scale significantly.
+
+The layouts should NOT feel:
+- tiny
+- compressed
+- difficult to read
+- text-dense with weak hierarchy
+
+Use:
+- larger headings
+- larger section titles
+- larger body typography
+- stronger hierarchy separation
+- dominant focal text regions
+- wider spacing rhythm
+
+Avoid:
+- micro typography
+- tiny body copy
+- weak hierarchy
+- giant empty spaces with small text
+
+##################################################
+LAYOUT SYSTEM
+##################################################
+
+Pages should resemble:
+- editorial intelligence reports
+- operational strategy documents
+- behavioral analysis systems
+- premium commercial infrastructure documents
+
+Use:
+- editorial asymmetry
+- layered composition
+- metadata rails
+- operational annotations
+- unequal content weighting
+- multiple information regions
+- varied density systems
+- environmental overlays
+- observational side structures
+
+Avoid:
+- equal-width card grids
+- sparse keynote layouts
+- giant empty whitespace
+- repetitive templates
+- startup-style symmetry
+
+At least 40% of pages should feel:
+- asymmetrical
+- layered
+- observational
+- structurally uneven
+- editorial rather than templated
+
+##################################################
+CONTENT DENSITY
+##################################################
+
+Each page should contain:
+- meaningful hierarchy
+- layered information
+- annotations
+- supporting structures
+- operational framing
+- balanced readability
+
+Allow sufficient breathing room for:
+- operational explanation
+- editorial pacing
+- hierarchy separation
+- visual layering
+
+Do NOT compress too many concepts into single overcrowded pages.
+
+The document should feel:
+dense enough to feel intelligent,
+but visually breathable and premium.

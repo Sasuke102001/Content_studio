@@ -1,0 +1,235 @@
+You are designing a premium LinkedIn document carousel for Polynovea — a behavioral
+intelligence and decision infrastructure company.
+
+This is the company's first-ever LinkedIn post.
+
+LinkedIn document carousels are uploaded as PDFs and displayed as square slides.
+The visual system must communicate institutional intelligence, operational maturity,
+and structural precision.
+
+NOT:
+- startup energy
+- music brand aesthetics
+- generic AI visuals
+- decorative clutter
+- SaaS dashboard aesthetics
+
+---
+
+## FORMAT
+
+This is a LinkedIn document carousel.
+
+Each slide:
+- Width: 540px
+- Height: 540px (1:1 square ratio — LinkedIn standard)
+- Total slides: 7
+- All slides rendered as a single scrollable HTML page (stacked vertically)
+- Each slide uses class="slide"
+
+LinkedIn document carousels display slightly differently from Instagram:
+- Slightly more body text per slide is acceptable (LinkedIn audience expects depth)
+- Square format — all content must work within a 1:1 canvas
+- Professional, editorial, analytical tone throughout
+
+---
+
+## COLOR SYSTEM
+
+Use the PRIMARY Polynovea brand palette (dark system).
+
+Background layers:
+- Primary background: #0A0A0A
+- Elevated surface: #121212
+- Card surface: #18181B
+- Border: #27272A
+
+Typography:
+- Primary text: #F5F5F5
+- Secondary text: #A1A1AA
+- Muted text: #71717A
+
+Accent layers:
+- Authority accent (gold): #E6D3A3
+- Muted gold: #9A8F6A
+- Depth accent (violet): #7C3AED
+
+Rules:
+- Dark backgrounds throughout — no light slides
+- Gold is the primary accent for headlines and key emphasis
+- Violet used sparingly: flow arrows on slide 5 only, and slide 3 eyebrow only
+- No pure white backgrounds
+- No gradient backgrounds
+
+---
+
+## TYPOGRAPHY
+
+Fonts:
+- Clash Display — all headlines and eyebrow labels
+- Inter — all body copy
+
+Load via:
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=clash-display@300,400,500,600,700&display=swap" rel="stylesheet">
+
+Scale hierarchy (calibrated for 540px square):
+- Eyebrow label: Clash Display, 10px, letter-spacing: 0.18em, uppercase, muted gold (#9A8F6A)
+- Headline H1: Clash Display, 28–36px, weight 600, primary text (#F5F5F5)
+- Subheadline: Clash Display, 20px, weight 500
+- Body copy: Inter, 14px, weight 400, secondary text (#A1A1AA), line-height: 1.75
+- Handle: Inter, 11px, muted text (#71717A)
+- Slide counter: Inter, 10px, muted text (#71717A)
+
+Rules:
+- Headlines dominate the upper zone of each slide
+- Body copy: 2–4 short lines max per slide — no walls of text
+- Line height 1.75+ on body for breathing room
+- Tight letter spacing on headlines (-0.02em)
+- Never compress type to fit — remove words instead
+
+---
+
+## LAYOUT SYSTEM
+
+Each slide internal structure:
+- Padding: 40px all sides
+- Top zone (first 80px): eyebrow label left-aligned + slide counter right-aligned
+- Mid zone: headline — left-aligned, strong visual weight
+- Lower zone: body copy and any supporting visual element
+- Bottom strip (last 20px): thin border line #27272A
+
+The 540×540px canvas must be fully utilized. No empty lower halves.
+
+Slide variation rules — no two consecutive slides feel identical:
+1. Full headline dominant — headline takes 60% of canvas, minimal body below
+2. Editorial split — headline top-left, structured element bottom-right
+3. Analytical — headline + mechanism visual (flow, list, status indicators)
+4. Close — centered, gold headline, strong final statement
+
+---
+
+## SLIDE-BY-SLIDE DESIGN DIRECTION
+
+SLIDE 1 — COVER / HOOK
+- Eyebrow: "IDENTITY" (muted gold)
+- Slide counter: "1 / 7" top-right
+- Background: #0A0A0A
+- Headline: Large, dominant, slightly editorial tension in the phrasing
+- Subtext below: 2 lines, secondary text color
+- Bottom-left: @polynovea in muted text
+- Bottom rule: thin gold line (#E6D3A3) instead of border — signals this is the opening
+- Layout: Full-width headline dominant, subtext anchored below
+
+SLIDE 2 — WHAT IT IS NOT
+- Eyebrow: "NOT THIS" (muted gold)
+- Slide counter: "2 / 7"
+- Background: #121212
+- Headline: Bold declarative, 3-part structure matching the three negations
+- Body: Short paragraph below
+- Visual detail: The three "not" items can be listed with a subtle strikethrough
+  visual or de-emphasis treatment — not colorful, just structural
+- Layout: Headline dominant upper, body mid, horizontal rule separating zones
+
+SLIDE 3 — WHAT IT IS
+- Eyebrow: "THIS" — use violet #7C3AED for this eyebrow only
+- Slide counter: "3 / 7"
+- Background: #0A0A0A
+- Headline: Gold color (#E6D3A3) for the headline text on this slide only
+  — the only slide where headline is gold rather than white
+  — this signals the identity statement visually
+- Body: 2 lines beneath in secondary text
+- Layout: Maximum visual weight — this is the center of gravity of the carousel
+
+SLIDE 4 — THE MARKET PROBLEM
+- Eyebrow: "THE GAP" (muted gold)
+- Slide counter: "4 / 7"
+- Background: #121212
+- Headline: Wraps to 2–3 lines — let it breathe
+- Body: 3 short analytical lines
+- Visual detail: Minimal two-column comparison structure in lower zone:
+  Left column: "Intuition-driven" → weak decisions, repeated mistakes, wasted resources
+  Right column: "Measurement-driven" → repeatable outcomes, structured intelligence
+  Style: Small card blocks in #18181B with border #27272A, 6px radius
+- Layout: Headline top, comparison cards bottom
+
+SLIDE 5 — THE MECHANISM
+- Eyebrow: "THE SYSTEM" (muted gold)
+- Slide counter: "5 / 7"
+- Background: #0A0A0A
+- Headline: Medium scale
+- Visual detail: Flow diagram — the primary element of this slide:
+  [Environments] → [Data] → [Intelligence] → [Decisions]
+  Arrow color: violet (#7C3AED) — the only other use of violet in this carousel
+  Node style: dark cards #18181B, border #27272A, gold label text
+  Position: lower 40% of slide
+- Body: 2 lines above the diagram
+- Layout: Headline mid, flow diagram anchored to bottom zone
+
+SLIDE 6 — THE PROVING GROUND
+- Eyebrow: "PHASE 1" (muted gold)
+- Slide counter: "6 / 7"
+- Background: #121212
+- Headline: Medium, operational tone
+- Body: 2–3 lines of operational explanation
+- Visual detail: Status block in lower zone — 3 items in a row:
+  [Module 1 ✓] [Module 2 ✓] [Module 3 →]
+  Style: small pill-shaped tags, gold checkmark for complete, muted arrow for in-progress
+  Location: Mumbai, India — show as a small label tag
+- Layout: Headline + body upper, status block lower
+
+SLIDE 7 — CLOSE
+- Eyebrow: "POLYNOVEA" (muted gold, 11px)
+- Slide counter: "7 / 7"
+- Background: #0A0A0A
+- Headline: Gold color (#E6D3A3) — matches slide 3, bookending the carousel
+- Body: 2 lines in secondary text
+- Bottom: @polynovea handle left, thin gold bottom rule
+- Layout: Strong close — headline centered visually, institutional feel
+
+---
+
+## SLIDE COUNTER
+
+Each slide shows position as "X / 7" in the top-right corner.
+
+Style:
+- Inter, 10px, #71717A (muted)
+- Right-aligned, same vertical position as eyebrow label
+- Format: "1 / 7", "2 / 7" etc.
+
+---
+
+## VISUAL DETAIL SYSTEM
+
+Use these to add depth without clutter:
+
+- Horizontal rules: 1px, #27272A — section separation within slides
+- Gold bottom rule: 1px, #E6D3A3 — slides 1 and 7 only (opening and close)
+- Card blocks: #18181B background, 1px border #27272A, 6px border-radius
+- Label tags: small rounded pill, #18181B background, 1px border, 10px Clash Display
+- Status indicators: checkmark (✓) in gold, arrow (→) in muted gold
+- Flow arrows: violet (#7C3AED), slide 5 only
+
+Avoid:
+- Stock imagery or icons
+- Gradient backgrounds
+- Drop shadows
+- Decorative elements without structural purpose
+- More than one violet element per slide
+
+---
+
+## OUTPUT
+
+Generate a single complete HTML file with all 7 slides stacked vertically.
+Each slide is 540×540px, class="slide".
+All slides visible simultaneously for screenshot export.
+
+The HTML document must be fully complete:
+- Opening <html> and <body>
+- All 7 slides rendered
+- Closing </body> and </html>
+- No truncation
+
+Return ONLY production-ready HTML. No markdown, no code fences, no commentary.

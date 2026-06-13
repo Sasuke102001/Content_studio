@@ -1,0 +1,20 @@
+{
+  "mode": "reel",
+  "name": "AI Motion Reel",
+  "dimensions": {
+    "width": 1080,
+    "height": 1920
+  },
+  "fps": 30,
+  "durationLimits": {
+    "minFrames": 150,
+    "maxFrames": 600
+  },
+  "outputs": {
+    "json": true,
+    "mp4": true
+  },
+  "plan_prompt_file": "plan_prompt.txt",
+  "generate_prompt_file": "generate_prompt.txt",
+  "slide_spec": "Plan 3-7 scene beats for a 5-20 second (150-600 frame) vertical 1080x1920 motion reel at 30fps"
+}

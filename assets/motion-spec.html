@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polynovea Motion Specification</title>
+    <link rel="preload" href="uploads/ClashDisplay-Variable.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="preload" href="https://rsms.me/inter/inter.css">
+    <style>
+        @font-face {
+            font-family: "Clash Display";
+            src: url("uploads/ClashDisplay-Variable.ttf") format("truetype-variations");
+            font-weight: 200 700;
+        }
+
+        @import url('https://rsms.me/inter/inter.css');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background: #0A0A0A;
+            color: #F5F5F5;
+            padding: 80px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            margin-bottom: 80px;
+            border-bottom: 1px solid #27272A;
+            padding-bottom: 60px;
+        }
+
+        h1 {
+            font-family: "Clash Display", sans-serif;
+            font-size: 56px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #F5F5F5;
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #A1A1AA;
+            margin-bottom: 8px;
+            font-weight: 400;
+        }
+
+        h2 {
+            font-family: "Clash Display", sans-serif;
+            font-size: 40px;
+            font-weight: 600;
+            margin: 60px 0 40px 0;
+            color: #E6D3A3;
+            line-height: 1.2;
+        }
+
+        h3 {
+            font-family: "Clash Display", sans-serif;
+            font-size: 28px;
+            font-weight: 600;
+            margin: 40px 0 24px 0;
+            color: #F5F5F5;
+            line-height: 1.3;
+        }
+
+        h4 {
+            font-family: "Clash Display", sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+            margin: 24px 0 16px 0;
+            color: #F5F5F5;
+        }
+
+        .section {
+            margin-bottom: 80px;
+        }
+
+        .spec-card {
+            background: #18181B;
+            border: 1px solid #27272A;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .spec-card:hover {
+            border-color: #7C3AED;
+            box-shadow: 0 8px 24px rgba(124, 58, 237, 0.15);
+        }
+
+        .spec-header {
+            background: #121212;
+            padding: 20px;
+            border-bottom: 1px solid #27272A;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .spec-title {
+            font-family: "Clash Display", sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            color: #F5F5F5;
+        }
+
+        .spec-value {
+            background: rgba(230, 211, 163, 0.1);
+            border: 1px solid #E6D3A3;
+            color: #E6D3A3;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-family: "Courier New", monospace;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .spec-body {
+            padding: 24px;
+        }
+
+        .spec-description {
+            color: #A1A1AA;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        .code-block {
+            background: #0A0A0A;
+            border: 1px solid #27272A;
+            border-radius: 6px;
+            padding: 16px;
+            overflow-x: auto;
+            margin-bottom: 16px;
+        }
+
+        .code-block code {
+            font-family: "Courier New", monospace;
+            font-size: 12px;
+            color: #A1A1AA;
+            line-height: 1.6;
+        }
+
+        .code-label {
+            font-size: 11px;
+            color: #71717A;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .demo-area {
+            background: #121212;
+            border: 1px solid #27272A;
+            border-radius: 6px;
+            padding: 32px;
+            min-height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+        }
+
+        .demo-item {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #E6D3A3, #7C3AED);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: #0A0A0A;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .demo-item.fade-in {
+            animation: fadeIn 300ms ease-out forwards;
+        }
+
+        .demo-item.slide-up {
+            animation: slideUp 300ms ease-out forwards;
+        }
+
+        .demo-item.pulse {
+            animation: pulse 500ms ease-in-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .demo-button {
+            background: #27272A;
+            color: #F5F5F5;
+            border: 1px solid #27272A;
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 300ms ease-in-out;
+        }
+
+        .demo-button:hover {
+            background: #E6D3A3;
+            color: #0A0A0A;
+            border-color: #E6D3A3;
+        }
+
+        .note {
+            background: #18181B;
+            border: 1px solid #27272A;
+            padding: 20px;
+            border-radius: 6px;
+            margin: 32px 0;
+            font-size: 14px;
+            color: #A1A1AA;
+            line-height: 1.6;
+        }
+
+        .note strong {
+            color: #F5F5F5;
+        }
+
+        .note-title {
+            color: #F5F5F5;
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .meta {
+            background: #18181B;
+            border: 1px solid #27272A;
+            padding: 20px;
+            border-radius: 6px;
+            margin: 32px 0;
+            font-size: 13px;
+            color: #A1A1AA;
+            font-family: "Courier New", monospace;
+        }
+
+        .principle-list {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+            margin: 20px 0;
+        }
+
+        .principle-item {
+            background: #121212;
+            border-left: 3px solid #7C3AED;
+            padding: 16px;
+            border-radius: 4px;
+        }
+
+        .principle-label {
+            font-weight: 600;
+            color: #F5F5F5;
+            margin-bottom: 4px;
+            font-size: 14px;
+        }
+
+        .principle-text {
+            color: #A1A1AA;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .scale-category {
+            margin-bottom: 60px;
+        }
+
+        .category-title {
+            font-family: "Clash Display", sans-serif;
+            font-size: 24px;
+            font-weight: 600;
+            color: #E6D3A3;
+            margin: 40px 0 32px 0;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #27272A;
+        }
+
+        .curve-demo {
+            background: #121212;
+            border: 1px solid #27272A;
+            border-radius: 6px;
+            padding: 32px;
+            margin: 16px 0;
+            text-align: center;
+            min-height: 100px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .curve-demo-box {
+            width: 40px;
+            height: 40px;
+            background: #E6D3A3;
+            border-radius: 3px;
+            margin: 0 auto;
+        }
+
+        .do-dont-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin: 24px 0;
+        }
+
+        .do-card, .dont-card {
+            background: #18181B;
+            border: 1px solid #27272A;
+            border-radius: 6px;
+            padding: 20px;
+        }
+
+        .do-card {
+            border-left: 3px solid #059669;
+        }
+
+        .dont-card {
+            border-left: 3px solid #DC2626;
+        }
+
+        .do-label, .dont-label {
+            font-weight: 600;
+            margin-bottom: 12px;
+            font-size: 14px;
+        }
+
+        .do-label {
+            color: #059669;
+        }
+
+        .dont-label {
+            color: #DC2626;
+        }
+
+        .do-card .do-label, .dont-card .dont-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .card-content {
+            font-size: 13px;
+            color: #A1A1AA;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Polynovea Motion Specification</h1>
+            <p class="subtitle">Controlled, intelligent animation that serves purpose. No decorative motion.</p>
+        </header>
+
+        <!-- PHILOSOPHY -->
+        <div class="section">
+            <h2>Animation Philosophy</h2>
+            <div class="principle-list">
+                <div class="principle-item">
+                    <div class="principle-label">Purpose First</div>
+                    <div class="principle-text">Every animation must serve a function: guiding attention, clarifying state change, or improving perceived performance.</div>
+                </div>
+                <div class="principle-item">
+                    <div class="principle-label">Subtle & Intentional</div>
+                    <div class="principle-text">Animation should feel intelligent and measured, never flashy or decorative. Restraint is the brand.</div>
+                </div>
+                <div class="principle-item">
+                    <div class="principle-label">Speed of Intent</div>
+                    <div class="principle-text">Duration reflects the weight of the change. Micro-interactions are fast; large transitions are deliberate.</div>
+                </div>
+                <div class="principle-item">
+                    <div class="principle-label">No Over-Animation</div>
+                    <div class="principle-text">Resist the urge to animate every state change. Stillness is as important as motion.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- DURATION SCALE -->
+        <div class="scale-category">
+            <div class="category-title">Duration Scale</div>
+
+            <div class="spec-card">
+                <div class="spec-header">
+                    <div class="spec-title">Instant</div>
+                    <div class="spec-value">0ms</div>
+                </div>
+                <div class="spec-body">
+                    <div class="spec-description">No transition. Used for state changes with no animation (usually reserved for internal state, not visual).</div>
+                    <span class="code-label">CSS Example:</span>
+                    <div class="code-block"><code>transition: none;
+/* Or omit transition entirely */</code></div>
+                    <span class="code-label">Use Cases:</span>
+                    <div class="spec-description">Loading state changes, internal state flags, non-visual property updates.</div>
+                </div>
+            </div>
+
+            <div class="spec-card">
+                <div class="spec-header">
+                    <div class="spec-title">Fast</div>
+                    <div class="spec-value">150ms</div>
+                </div>
+                <div class="spec-body">
+                    <div class="spec-description">Quick micro-interactions and immediate feedback. Feels snappy and responsive.</div>
+                    <span class="code-label">CSS Example:</span>
+                    <div class="code-block"><code>transition: background-color 150ms ease-in-out,
+              border-color 150ms ease-in-out;</code></div>
+                    <span class="code-label">Use Cases:</span>
+                    <div class="spec-description">Hover states on buttons, icon color shifts, border transitions on focus, small state changes.</div>
+                </div>
+            </div>
+
+            <div class="spec-card">
+                <div class="spec-header">
+                    <div class="spec-title">Default</div>
+                    <div class="spec-value">300ms</div>
+                </div>
+                <div class="spec-body">
+                    <div class="spec-description">Standard transition duration. Most common animation speed in the system.</div>
+                    <span class="code-label">CSS Example:</span>
+                    <div class="code-block"><code>transition: opacity 300ms ease-out,
+              transform 300ms ease-out;</code></div>
+                    <span class="code-label">Use Cases:</span>
+                    <div class="spec-description">Element reveals, fade-ins, card entrances, modal opens, tooltip displays, most state changes.</div>
+                </div>
+            </div>
+
+            <div class="spec-card">
+                <div class="spec-header">
+                    <div class="spec-title">Slow</div>
+                    <div class="spec-value">500ms</div>
+                </div>
+                <div class="spec-body">
+                    <div class="spec-description">Deliberate transitions for page-level changes and large element movements.</div>
+                    <span class="code-label">CSS Example:</span>
+                    <div class="code-block"><code>transition: all 500ms ease-in-out;</code></div>
+                    <span class="code-label">Use Cases:</span>
+                    <div class="spec-description">Page transitions, section reveals, large component entrances, hero image overlays.</div>
+                </div>
+            </div>
+
+            <div class="spec-card">
+                <div class="spec-header">
+                    <div class="spec-title">Crawl</div>
+                    <div class="spec-value">800ms</div>
+                </div>
+                <div class="spec-body">
+                    <div class="spec-description">Slow, intentional motion for 3D scenes and hero-level animations. Feels premium and considered.</div>
+                    <span class="code-label">CSS Example:</span>
+                    <div class="code-block"><code>transition: transform 800ms cubic-bezier(0.16, 1, 0.3, 1);</code></div>
+                    <span class="code-label">Use Cases:</span>
+                    <div class="spec-description">3D particle animations, camera drift, hero section reveals, large canvas transitions.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- EASING CURVES -->
+        <div class="scale-category">
+            <div class="category-title">Easing Curves</div>
+
+            <div class="spec-card">
+                <div class="spec-header">
+                    <div class="spec-title">Entrance (ease-out)</div>
+                    <div class="spec-value">ease-out</div>
+                </div>
+                <div class="spec-body">
+                    <div class="spec-description">Fast start, smooth deceleration. Elements coming into view feel natural and arrive gently.</div>
+                    <span class="code-label">CSS Example:</span>
+                    <div class="code-block"><code>/* Fade in + slide up */
+opacity: 0 → 1 (ease-out)
+transform: translateY(24px) → 0 (ease-out)</code></div>
+                    <span class="code-label">Use Cases:</span>
+                    <div class="spec-description">Elements entering from off-screen, fades coming in, content reveals, modals opening.</div>
+                </div>
+            </div>
+
+            <div class="spec-card">
+                <div class="spec-header">
+                    <div class="spec-title">Exit (ease-in)</div>
+                    <div class="spec-value">ease-in</div>
+                </div>
+                <div class="spec-body">
+                    <div class="spec-description">Slow start, accelerating. Elements leaving feel like they're being pulled away.</div>
+                    <span class="code-label">CSS Example:</span>
+                    <div class="code-block"><code>/* Fade out + slide down */
+opacity: 1 → 0 (ease-in)
+transform: translateY(0) → 24px (ease-in)</code></div>
+                    <span class="code-label">Use Cases:</span>
+                    <div class="spec-description">Elements exiting, modals closing, content dismissal, fade-outs.</div>
+                </div>
+            </div>
+
+            <div class="spec-card">
+                <div class="spec-header">
+                    <div class="spec-title">State Change (ease-in-out)</div>
+                    <div class="spec-value">ease-in-out</div>
+                </div>
+                <div class="spec-body">
+                    <div class="spec-description">Smooth acceleration and deceleration. Good for reversible changes like hover states.</div>
+                    <span class="code-label">CSS Example:</span>
+                    <div class="code-block"><code>transition: all 150ms ease-in-out;</code></div>
+                    <span class="code-label">Use Cases:</span>
+                    <div class="spec-description">Hover effects, active states, toggles, color transitions, border shifts.</div>
+                </div>
+            </div>
+
+            <div class="spec-card">
+                <div class="spec-header">
+                    <div class="spec-title">Hero/3D (Custom)</div>
+                    <div class="spec-value">cubic-bezier(0.16, 1, 0.3, 1)</div>
+                </div>
+                <div class="spec-body">
+                    <div class="spec-description">Custom curve optimized for hero-scale animations. Fast entrance, smooth elastic settle.</div>
+                    <span class="code-label">CSS Example:</span>
+                    <div class="code-block"><code>transition: transform 800ms cubic-bezier(0.16, 1, 0.3, 1);</code></div>
+                    <span class="code-label">Use Cases:</span>
+                    <div class="spec-description">3D camera movements, particle animations, large canvas transitions, hero reveals.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SCROLL BEHAVIOR -->
+        <div class="scale-category">
+            <div class="category-title">Scroll Behavior Rules</div>
+
+            <div class="spec-card">
+                <div class="spec-header">
+                    <div class="spec-title">Element Entrance on Scroll</div>
+                    <div class="spec-value">24px offset + fade</div>
+                </div>
+                <div class="spec-body">
+                    <div class="spec-description">Elements fade in from a subtle downward offset (24px), then translate to final position. Creates flow without being obvious.</div>
+                    <span class="code-label">CSS Example:</span>
+                    <div class="code-block"><code>.element {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 300ms ease-out, transform 300ms ease-out;
+}
+
+.element.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}</code></div>
+                    <span class="code-label">JavaScript Trigger:</span>
+                    <div class="code-block"><code>const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('in-view');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15 }); // Trigger at 15% into viewport
+
+document.querySelectorAll('[data-scroll-animate]')
+  .forEach(el => observer.observe(el));</code></div>
+                </div>
+            </div>
+
+            <div class="spec-card">
+                <div class="spec-header">
+                    <div class="spec-title">Sibling Element Stagger</div>
+                    <div class="spec-value">80ms delay</div>
+                </div>
+                <div class="spec-body">
+                    <div class="spec-description">Each sibling element animates with an 80ms stagger. Creates visual cascade without feeling slow.</div>
+                    <span class="code-label">CSS Example:</span>
+                    <div class="code-block"><code>.element {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 300ms ease-out, transform 300ms ease-out;
+}
+
+.element:nth-child(1) { transition-delay: 0ms; }
+.element:nth-child(2) { transition-delay: 80ms; }
+.element:nth-child(3) { transition-delay: 160ms; }
+.element:nth-child(4) { transition-delay: 240ms; }</code></div>
+                    <span class="code-label">Or use JavaScript:</span>
+                    <div class="code-block"><code">element.style.transitionDelay = `${index * 80}ms`;</code></div>
+                </div>
+            </div>
+
+            <div class="spec-card">
+                <div class="spec-header">
+                    <div class="spec-title">Viewport Trigger Point</div>
+                    <div class="spec-value">15% into viewport</div>
+                </div>
+                <div class="spec-body">
+                    <div class="spec-description">Animation triggers when element is 15% visible in the viewport, not at 0% or 50%. This creates a "just noticed" feeling.</div>
+                    <span class="code-label">IntersectionObserver Configuration:</span>
+                    <div class="code-block"><code">const observer = new IntersectionObserver(callback, {
+  threshold: 0.15  // Trigger at 15% visibility
+});</code></div>
+                </div>
+            </div>
+
+            <div class="spec-card">
+                <div class="spec-header">
+                    <div class="spec-title">Pre-loaded Elements (No Animation)</div>
+                    <div class="spec-value">Do not animate</div>
+                </div>
+                <div class="spec-body">
+                    <div class="spec-description">Elements already visible on page load should NOT animate. Only animate elements that enter after scroll.</div>
+                    <span class="code-label">Implementation:</span>
+                    <div class="code-block"><code>/* Only observe elements below the fold */
+const elements = document.querySelectorAll(
+  '[data-scroll-animate]'
+);
+
+elements.forEach(el => {
+  const rect = el.getBoundingClientRect();
+  
+  /* Skip if already in viewport on load */
+  if (rect.top < window.innerHeight) {
+    el.classList.add('in-view');
+  } else {
+    observer.observe(el);
+  }
+});</code></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- HOVER RULES -->
+        <div class="scale-category">
+            <div class="category-title">Hover Rules</div>
+
+            <div class="spec-card">
+                <div class="spec-header">
+                    <div class="spec-title">Gold Accent Hover</div>
+                    <div class="spec-value">Brightness lift only</div>
+                </div>
+                <div class="spec-body">
+                    <div class="spec-description">Gold elements respond to hover with subtle brightness increase, not scale or other transforms.</div>
+                    <span class="code-label">CSS Example:</span>
+                    <div class="code-block"><code">.button-gold {
+  background: #E6D3A3;
+  color: #0A0A0A;
+  transition: filter 150ms ease-in-out;
+}
+
+.button-gold:hover {
+  filter: brightness(1.1);
+}</code></div>
+                    <span class="code-label">Use Cases:</span>
+                    <div class="spec-description">Authority buttons, primary CTAs, gold-accented elements.</div>
+                </div>
+            </div>
+
+            <div class="spec-card">
+                <div class="spec-header">
+                    <div class="spec-title">Card Hover State</div>
+                    <div class="spec-value">Border shift + shadow</div>
+                </div>
+                <div class="spec-body">
+                    <div class="spec-description">Card border transitions from muted to intelligence violet, creating interactive feedback without lifting the card.</div>
+                    <span class="code-label">CSS Example:</span>
+                    <div class="code-block"><code>.card {
+  border: 1px solid #27272A;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: border-color 150ms ease-in-out, 
+              box-shadow 150ms ease-in-out;
+}
+
+.card:hover {
+  border-color: #7C3AED;
+  box-shadow: 0 8px 24px rgba(124, 58, 237, 0.15);
+}</code></div>
+                    <span class="code-label">Use Cases:</span>
+                    <div class="spec-description">Interactive cards, clickable containers, content previews.</div>
+                </div>
+            </div>
+
+            <div class="spec-card">
+                <div class="spec-header">
+                    <div class="spec-title">Button Hover State</div>
+                    <div class="spec-value">Background transition</div>
+                </div>
+                <div class="spec-body">
+                    <div class="spec-description">Button background transitions smoothly on hover using Fast duration. No scale transforms.</div>
+                    <span class="code-label">CSS Example:</span>
+                    <div class="code-block"><code>.button {
+  background: #27272A;
+  color: #F5F5F5;
+  transition: background-color 150ms ease-in-out, 
+              border-color 150ms ease-in-out;
+}
+
+.button:hover {
+  background: #E6D3A3;
+  color: #0A0A0A;
+  border-color: #E6D3A3;
+}
+
+/* Alternative: Primary button */
+.button-primary {
+  background: #E6D3A3;
+  color: #0A0A0A;
+  transition: filter 150ms ease-in-out;
+}
+
+.button-primary:hover {
+  filter: brightness(0.95);
+}</code></div>
+                </div>
+            </div>
+
+            <div class="spec-card">
+                <div class="spec-header">
+                    <div class="spec-title">No Scale Transforms on Hover</div>
+                    <div class="spec-value">Intentional exclusion</div>
+                </div>
+                <div class="spec-body">
+                    <div class="spec-description">Never use scale(), translateY(), or any size-changing transforms on hover. This feels playful and undermines the controlled brand.</div>
+                    <div class="do-dont-grid">
+                        <div class="dont-card">
+                            <div class="dont-label">❌ Do NOT</div>
+                            <div class="card-content">
+                                <code>transform: scale(1.05);</code><br><br>
+                                Too playful. Feels interactive but not serious.
+                            </div>
+                        </div>
+                        <div class="do-card">
+                            <div class="do-label">✓ Do Instead</div>
+                            <div class="card-content">
+                                <code>filter: brightness(1.1);</code><br><br>
+                                Subtle lighting shift. Feels intelligent and measured.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3D SCENE RULES -->
+        <div class="scale-category">
+            <div class="category-title">3D Scene Rules</div>
+
+            <div class="spec-card">
+                <div class="spec-header">
+                    <div class="spec-title">Particle/Node Movement</div>
+                    <div class="spec-value">Continuous + autonomous</div>
+                </div>
+                <div class="spec-body">
+                    <div class="spec-description">Particles move continuously on a loop, never stopping. Movement feels autonomous and intelligent, not tied to user input.</div>
+                    <span class="code-label">CSS Animation Example:</span>
+                    <div class="code-block"><code">@keyframes float-particle {
+  0% { transform: translate(0, 0) rotateZ(0deg); }
+  25% { transform: translate(20px, -15px) rotateZ(90deg); }
+  50% { transform: translate(0, -30px) rotateZ(180deg); }
+  75% { transform: translate(-20px, -15px) rotateZ(270deg); }
+  100% { transform: translate(0, 0) rotateZ(360deg); }
+}
+
+.particle {
+  animation: float-particle 12s ease-in-out infinite;
+}</code></div>
+                    <span class="code-label">JavaScript (More Control):</span>
+                    <div class="code-block"><code">function animateParticle(el, startX, startY) {
+  let time = 0;
+  const duration = 12000; // 12 seconds
+  
+  function update() {
+    time = (time + 16) % duration;
+    const progress = time / duration;
+    
+    // Sine wave movement
+    const x = startX + Math.sin(progress * Math.PI * 2) * 30;
+    const y = startY + Math.cos(progress * Math.PI * 2) * 30;
+    const z = Math.sin(progress * Math.PI * 2) * 20;
+    
+    el.style.transform = 
+      `translate3d(${x}px, ${y}px, ${z}px)`;
+    
+    requestAnimationFrame(update);
+  }
+  update();
+}</code></div>
+                </div>
+            </div>
+
+            <div class="spec-card">
+                <div class="spec-header">
+                    <div class="spec-title">Scroll-Linked Camera Drift</div>
+                    <div class="spec-value">Tied to scroll position</div>
+                </div>
+                <div class="spec-body">
+                    <div class="spec-description">3D camera position shifts based on scroll progress, creating depth. Not time-based, but scroll-based.</div>
+                    <span class="code-label">JavaScript Example:</span>
+                    <div class="code-block"><code">const scene = document.querySelector('.scene-3d');
+
+window.addEventListener('scroll', () => {
+  const scrollProgress = 
+    window.scrollY / 
+    (document.documentElement.scrollHeight - 
+     window.innerHeight);
+  
+  // Camera drift based on scroll
+  const driftX = scrollProgress * 20;
+  const driftY = scrollProgress * 15;
+  
+  scene.style.transform = 
+    `perspective(1200px) 
+     rotateX(${driftY}deg) 
+     rotateY(${driftX}deg)`;
+}, { passive: true });</code></div>
+                </div>
+            </div>
+
+            <div class="spec-card">
+                <div class="spec-header">
+                    <div class="spec-title">Gold Particle Intensity</div>
+                    <div class="spec-value">Increases on scroll down</div>
+                </div>
+                <div class="spec-body">
+                    <div class="spec-description">Gold particle brightness/opacity increases as user scrolls down, adding visual energy to the experience.</div>
+                    <span class="code-label">JavaScript Example:</span>
+                    <div class="code-block"><code">const goldParticles = 
+  document.querySelectorAll('.particle-gold');
+
+window.addEventListener('scroll', () => {
+  const scrollProgress = 
+    Math.min(window.scrollY / 1000, 1);
+  
+  goldParticles.forEach(particle => {
+    /* Brightness: 0.6 → 1.0 */
+    const brightness = 0.6 + (scrollProgress * 0.4);
+    particle.style.filter = 
+      `brightness(${brightness})`;
+  });
+}, { passive: true });</code></div>
+                </div>
+            </div>
+
+            <div class="spec-card">
+                <div class="spec-header">
+                    <div class="spec-title">3D Transition Duration</div>
+                    <div class="spec-value">800ms (Crawl)</div>
+                </div>
+                <div class="spec-body">
+                    <div class="spec-description">All 3D transitions use the Crawl duration (800ms) with the custom cubic-bezier easing curve for smooth, premium feels.</div>
+                    <span class="code-label">CSS Example:</span>
+                    <div class="code-block"><code">.scene-3d {
+  transition: transform 800ms 
+    cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scene-3d.active {
+  transform: perspective(1200px) 
+    rotateX(0deg) 
+    rotateY(0deg) 
+    translateZ(100px);
+}</code></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- DO'S AND DON'TS -->
+        <div class="section">
+            <h2>Do's and Don'ts</h2>
+
+            <div class="do-dont-grid">
+                <div class="do-card">
+                    <div class="do-label">✓ DO: Animate with purpose</div>
+                    <div class="card-content">Fade in content, highlight state changes, guide attention. Every animation serves a function.</div>
+                </div>
+                <div class="dont-card">
+                    <div class="dont-label">✗ DON'T: Animate decoratively</div>
+                    <div class="card-content">Spinning icons, wiggling text, pulsing backgrounds. Motion without reason feels immature.</div>
+                </div>
+            </div>
+
+            <div class="do-dont-grid">
+                <div class="do-card">
+                    <div class="do-label">✓ DO: Keep it subtle</div>
+                    <div class="card-content">Small transforms, brief durations, smooth easings. Let the interaction speak quietly.</div>
+                </div>
+                <div class="dont-card">
+                    <div class="dont-label">✗ DON'T: Use over-animation</div>
+                    <div class="card-content">Bouncy easings, 3-second transitions, multiple simultaneous animations. Exhausting and unprofessional.</div>
+                </div>
+            </div>
+
+            <div class="do-dont-grid">
+                <div class="do-card">
+                    <div class="do-label">✓ DO: Use easing curves appropriately</div>
+                    <div class="card-content">ease-out for enters, ease-in for exits, ease-in-out for toggles. Proper easing elevates the feel.</div>
+                </div>
+                <div class="dont-card">
+                    <div class="dont-label">✗ DON'T: Use linear or ease</div>
+                    <div class="card-content">Linear looks mechanical. Generic ease feels flat. Choose purposefully from the spec.</div>
+                </div>
+            </div>
+
+            <div class="do-dont-grid">
+                <div class="do-card">
+                    <div class="do-label">✓ DO: Respect user preferences</div>
+                    <div class="card-content">Disable animations for users with prefers-reduced-motion. Accessibility is non-negotiable.</div>
+                </div>
+                <div class="dont-card">
+                    <div class="dont-label">✗ DON'T: Ignore accessibility</div>
+                    <div class="card-content">Auto-playing animations, no motion reduction support, forced motion-heavy experiences.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ACCESSIBILITY -->
+        <div class="section">
+            <h2>Accessibility</h2>
+            <div class="note">
+                <span class="note-title">Respect prefers-reduced-motion</span>
+                Always check for the user's motion preference and disable animations accordingly. This is not optional.
+                <div class="code-block" style="margin-top: 12px;"><code">@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}</code></div>
+            </div>
+        </div>
+
+        <!-- META -->
+        <div class="section">
+            <div class="meta">
+Document: Motion Specification v1.0<br>
+Date: May 7, 2026<br>
+Status: Ready for Implementation<br>
+Duration Scales: 5 (Instant, Fast, Default, Slow, Crawl)<br>
+Easing Curves: 4 (ease-out, ease-in, ease-in-out, custom)<br>
+Scroll Behavior: 4 rules (entrance, stagger, trigger, preload)<br>
+Hover Rules: 4 categories (gold, cards, buttons, no-scale)<br>
+3D Rules: 4 principles (particles, camera, intensity, duration)<br>
+Philosophy: Controlled, intelligent, purposeful, subtle
+            </div>
+        </div>
+    </div>
+</body>
+</html>

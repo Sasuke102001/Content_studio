@@ -1,0 +1,134 @@
+Generate an Instagram carousel for the Polynovea company page (@polynovea).
+
+This is the FIRST POST the company has ever published on Instagram.
+
+Its sole job is to establish what kind of company Polynovea is before anyone builds the wrong mental model. It does not tell a founding story. It does not introduce the founder. It states clearly what Polynovea is and what it is not.
+
+This is a company identity post, not a founder narrative post.
+
+##################################################
+WHAT THIS POST IS NOT
+##################################################
+
+Do NOT frame this as:
+- a founder journey post
+- an origin story ("we started when...")
+- a motivation or vision post
+- a music company introduction
+- a venue tech startup announcement
+- a generic AI startup post
+
+This post does NOT belong to the founder.
+It belongs to the company.
+
+##################################################
+WHAT THIS POST IS
+##################################################
+
+A precise, institutional statement of company identity.
+
+Polynovea is an AI, data, and behavioral intelligence system.
+
+It is NOT:
+- a venue company
+- a music company
+- an event company
+- a booking layer
+- a record label
+
+Those are execution surfaces — environments where the system is being deployed and proven.
+
+The actual foundation is:
+behavioral intelligence infrastructure and decision systems.
+
+The company exists to make important decisions measurable in environments where they are currently made by intuition.
+
+##################################################
+CAROUSEL STRUCTURE — 6 SLIDES
+##################################################
+
+SLIDE 1 — THE HOOK
+Headline: "Most people who hear about Polynovea put it in the wrong category."
+Subtext: They hear "venues" and "music" and they stop there. That's not the company.
+Eyebrow label: IDENTITY
+Tone: Calm, direct, creates immediate tension
+
+SLIDE 2 — WHAT IT IS NOT
+Headline: "Polynovea is not a venue company. Not a music company. Not an event layer."
+Body: These are execution surfaces. The first environments where the system is being deployed and proven. The company is not defined by its current deployment surface.
+Eyebrow label: NOT THIS
+Tone: Precise, zero ambiguity
+
+SLIDE 3 — WHAT IT IS
+Headline: "Polynovea is a behavioral intelligence and decision infrastructure system."
+Body: It builds systems that understand, influence, optimize, and scale human behavior through measurable feedback loops. The domain changes. The system does not.
+Eyebrow label: THIS
+Tone: Institutional, confident, grounded
+
+SLIDE 4 — THE INTELLECTUAL CORE
+Headline: "Behavior is not random. Most organizations just never build the infrastructure to measure it."
+Body: Human systems contain patterns, triggers, incentives, and repeatable structures. The gap is not in the domain — it is in the measurement layer. Polynovea builds that layer.
+Eyebrow label: THE GAP
+Tone: Analytical, structural
+
+SLIDE 5 — THE PROVING GROUND
+Headline: "Venues are Phase 1. The proving ground, not the destination."
+Body: Live environments are uniquely measurable — foot traffic, dwell time, spend, return visits. That is why they are the first deployment surface. Not because Polynovea is a venue company. Because venues produce clear, attributable behavioral evidence.
+Eyebrow label: PHASE 1
+Tone: Operational, explanatory
+
+SLIDE 6 — THE CLOSE
+Headline: "One company. One purpose. Make important decisions measurable."
+Body: Where intuition currently drives decisions, structured intelligence should. That is what Polynovea is being built to do.
+Eyebrow label: POLYNOVEA
+Tone: Sharp, final, authoritative
+
+##################################################
+VOICE AND TONE RULES
+##################################################
+
+The copy should feel:
+- institutional
+- sharp
+- calm
+- operationally grounded
+- analytically confident
+
+The copy should NOT feel:
+- startup-excited
+- emotionally persuasive
+- founder-narrative driven
+- generic AI brand
+- motivational
+
+Sentence style:
+- Short declarative sentences
+- One idea per sentence
+- No hedging
+- No hype language ("revolutionary", "game-changing", "disrupting")
+- No warm-up preamble
+
+##################################################
+WHAT MUST NOT APPEAR IN ANY SLIDE
+##################################################
+
+- The founder's name or personal story
+- "We started because..."
+- Any mention of Polynovea Records as the parent company
+- Music promotion language
+- "We're passionate about..."
+- "Join us on this journey"
+- Any startup clichés
+
+##################################################
+BRAND IDENTITY MARKERS
+##################################################
+
+Company name: POLYNOVEA
+Handle: @polynovea
+Category marker: Behavioral Intelligence System
+Tagline available: "Measure. Understand. Optimize."
+
+Include the company handle (@polynovea) on the first and last slide only.
+
+Progress indicator: Show slide position (1/6, 2/6 etc.) or dot indicators at the bottom of each slide.

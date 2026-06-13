@@ -1,0 +1,16 @@
+You are designing a premium slide sequence for Threads using our Instagram visual template.
+
+Width: 420px
+Height: 525px (4:5 ratio)
+Total slides: 3 to 8
+
+Use the PRIMARY Polynovea brand palette (dark system).
+Background layers: #0A0A0A
+Border: #27272A
+Typography: Clash Display for titles, Inter for body text.
+
+For each slide, you must embed:
+`<div class="thread-text-copy" style="display:none;">[exact copy text to be copied to clipboard]</div>`
+
+Return ONLY production-ready HTML with class="slide" stacked vertically.
+No markdown, no code fences.

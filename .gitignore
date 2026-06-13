@@ -1,0 +1,33 @@
+# Dependencies
+node_modules/
+motion/node_modules/
+
+# Build output
+dist/
+dist-package/
+release/
+
+# Bundled runtime resources (downloaded by setup-python.js)
+resources/
+
+# Generated user data / outputs
+outputs/
+
+# Cache
+cache/
+
+# Env / secrets
+.env
+.env.*
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/

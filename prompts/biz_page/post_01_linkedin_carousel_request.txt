@@ -1,0 +1,159 @@
+Generate a LinkedIn document carousel for the Polynovea company page (@polynovea).
+
+This is the company's first post on LinkedIn.
+
+Its job is to establish what kind of company Polynovea is before the LinkedIn audience
+builds the wrong mental model. This is a company identity post. No founder story. No
+origin narrative. The company speaks about itself as an institution.
+
+LinkedIn audience: operators, investors, industry observers, potential clients.
+
+##################################################
+WHAT THIS POST IS NOT
+##################################################
+
+Do NOT frame this as:
+- a founder journey post
+- an origin story ("we started when...")
+- a startup announcement
+- a music or venue company introduction
+- a generic AI product launch
+
+This post does NOT belong to the founder.
+It belongs to the company.
+
+##################################################
+WHAT THIS POST IS
+##################################################
+
+A precise, institutional statement of company identity and market thesis.
+
+Polynovea is a behavioral intelligence and decision infrastructure system.
+
+It is NOT:
+- a venue company
+- a music company
+- an event company
+- a booking layer
+- a record label
+
+Those are execution surfaces — environments where the system is first being
+deployed and proven.
+
+The actual foundation is:
+behavioral intelligence infrastructure and decision systems.
+
+The company exists to make important decisions measurable in environments where
+they are currently made by intuition.
+
+##################################################
+CAROUSEL STRUCTURE — 7 SLIDES
+##################################################
+
+SLIDE 1 — COVER / HOOK
+Eyebrow: IDENTITY
+Headline: "We need to correct something before we go further."
+Body: Most companies get filed under the wrong category the moment someone hears
+"venues" and "music" in the same sentence. Polynovea is not that company.
+Note: Cover slide. Must stop the scroll. Dark background, dominant headline.
+Company handle @polynovea bottom left.
+
+SLIDE 2 — WHAT IT IS NOT
+Eyebrow: NOT THIS
+Headline: "Not a venue company. Not a music company. Not a booking layer."
+Body: These are execution surfaces. The first environments where the system is being
+deployed and proven. The company is not defined by the domain it first operates in.
+Note: The three "not" statements should carry strong visual weight — they are the
+correction that resets the audience's mental model.
+
+SLIDE 3 — WHAT IT IS
+Eyebrow: THIS
+Headline: "Behavioral intelligence infrastructure and decision systems."
+Body: Polynovea builds systems that understand, influence, optimize, and scale human
+behavior through measurable feedback loops. The domain changes. The system does not.
+Note: The center of gravity of the carousel. Maximum visual weight. This is the
+identity statement the entire post builds toward.
+
+SLIDE 4 — THE MARKET PROBLEM
+Eyebrow: THE GAP
+Headline: "Most important decisions are made by intuition inside systems that should
+be measurable."
+Body: Weak measurement produces weak decisions, repeated mistakes, and wasted
+resources. The gap is not effort or intent — it is infrastructure. Most organizations
+never build the layer required to capture, structure, and operationalize behavioral
+patterns.
+Note: Analytical slide. The market thesis. This is why the company exists at an
+industry level — not a personal founder observation.
+
+SLIDE 5 — THE MECHANISM
+Eyebrow: THE SYSTEM
+Headline: "Environments → Data → Intelligence → Decisions."
+Body: The system captures behavioral signals from real environments, structures and
+enriches them through an intelligence layer, and converts the output into
+confidence-scored decision frameworks. The output is not a report. It is an
+operational decision.
+Note: Flow diagram slide. The arrow sequence is the dominant visual element.
+Four nodes connected by arrows — clean, minimal, no decoration.
+
+SLIDE 6 — THE PROVING GROUND
+Eyebrow: PHASE 1
+Headline: "Venues are Phase 1. The proving ground, not the destination."
+Body: Live environments are uniquely measurable — foot traffic, dwell time, spend
+behavior, and return visits are directly attributable to specific variables. Phase 1
+is live in Mumbai. The system is operating and producing measurable results.
+Note: Grounded, operational. Can include minimal status indicators:
+Module 1 ✓  Module 2 ✓  Module 3 in progress.
+
+SLIDE 7 — CLOSE
+Eyebrow: POLYNOVEA
+Headline: "One company. One purpose. Make important decisions measurable."
+Body: Follow @polynovea for the full architecture — how the system works, what the
+data shows, and where Phase 1 leads.
+Note: Strong institutional close. Company handle prominent. Not a generic CTA —
+a final positioning statement.
+
+##################################################
+VOICE AND TONE RULES
+##################################################
+
+The copy should feel:
+- institutionally confident
+- analytically precise
+- calm and direct
+- operationally grounded
+
+The copy should NOT feel:
+- startup-excited
+- founder-narrative driven
+- emotionally persuasive
+- generic AI brand
+- motivational
+
+Sentence style:
+- Short declarative sentences
+- One idea per sentence
+- No hedging language
+- No hype: "revolutionary", "game-changing", "disrupting", "next-gen"
+- No warm-up preamble
+
+##################################################
+WHAT MUST NOT APPEAR IN ANY SLIDE
+##################################################
+
+- The founder's name or personal story
+- "We started because..."
+- Any mention of Polynovea Records as the parent company
+- Music promotion language
+- "We're passionate about..."
+- "Join us on this journey"
+- Any startup clichés or generic AI company language
+
+##################################################
+BRAND MARKERS
+##################################################
+
+Company: POLYNOVEA
+LinkedIn handle: @polynovea
+Category: Behavioral Intelligence Infrastructure
+Handle appears on slide 1 and slide 7 only.
+Slide position indicator on each slide (1/7, 2/7, etc.)

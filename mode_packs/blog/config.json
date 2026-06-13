@@ -1,0 +1,12 @@
+{
+  "mode": "blog",
+  "name": "Blog Post Draft",
+  "outputs": {
+    "html": true,
+    "png": false,
+    "pdf": false
+  },
+  "plan_prompt_file": "plan_prompt.txt",
+  "generate_prompt_file": "generate_prompt.txt",
+  "slide_spec": "Long-form editorial post"
+}

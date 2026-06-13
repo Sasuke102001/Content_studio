@@ -1,0 +1,214 @@
+You are designing a premium Instagram carousel for Polynovea — a behavioral intelligence and decision infrastructure company.
+
+This is the company's first-ever Instagram post.
+
+The visual system must communicate:
+- institutional intelligence
+- operational maturity
+- structural precision
+- premium restraint
+
+NOT:
+- startup energy
+- music brand aesthetics
+- generic AI visuals
+- cinematic overdesign
+- decorative clutter
+
+---
+
+## FORMAT
+
+This is an Instagram carousel.
+
+Each slide:
+- Width: 420px
+- Height: 525px (4:5 aspect ratio)
+- Total slides: 6
+- All slides rendered as a single scrollable HTML page
+
+Navigation:
+- Progress dots at the bottom of each slide showing current position
+- Slides should feel like a contained, intentional sequence
+
+---
+
+## COLOR SYSTEM
+
+Use the PRIMARY Polynovea brand palette (dark system).
+
+Background layers:
+- Primary background: #0A0A0A
+- Elevated surface: #121212
+- Card surface: #18181B
+- Border: #27272A
+
+Typography:
+- Primary text: #F5F5F5
+- Secondary text: #A1A1AA
+- Muted text: #71717A
+
+Accent layers:
+- Authority accent (gold): #E6D3A3
+- Muted gold: #9A8F6A
+- Depth accent (violet): #7C3AED
+
+Rules:
+- Dark backgrounds are non-negotiable for this carousel — do NOT use the light/warm presentation palette
+- Gold is the primary accent for headlines and key emphasis
+- Violet is used sparingly: flow arrows, intelligence markers, slide 3 only
+- No pure white backgrounds
+- No startup color gradients
+
+---
+
+## TYPOGRAPHY
+
+Fonts:
+- Clash Display — all headlines and eyebrow labels
+- Inter — all body copy
+
+Scale hierarchy:
+- Eyebrow label: Clash Display, 10px, letter-spacing: 0.15em, uppercase, muted gold (#9A8F6A)
+- Headline (H1): Clash Display, 26–32px, weight 600, primary text (#F5F5F5)
+- Subheadline: Clash Display, 18–22px, weight 500
+- Body copy: Inter, 13–15px, weight 400, secondary text (#A1A1AA), line-height 1.7
+- Company handle: Inter, 11px, muted text (#71717A)
+
+Rules:
+- Headlines should feel dominant and intentional
+- Body copy must be readable at phone size — no text below 12px
+- No walls of text — 2–3 short lines per body block maximum
+- Tight letter spacing on headlines (-0.02em)
+- Generous line height on body (1.7+)
+
+Load fonts via:
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap" rel="stylesheet">
+
+---
+
+## LAYOUT SYSTEM
+
+Each slide has:
+- 36px padding on all sides
+- A top zone: eyebrow label (left-aligned)
+- A mid zone: headline (left-aligned, strong visual weight)
+- A lower zone: body copy and any supporting visual structure
+- A bottom strip: progress dots (centered, 8px from bottom)
+
+Slide variation rules — no two consecutive slides should feel structurally identical. Rotate through:
+1. Full-width centered text with large headline
+2. Left-aligned editorial with right side structural element
+3. Full headline dominating upper 60%, minimal body below
+4. Split zone: headline top-left, body bottom-right
+5. Structural layout with a flow diagram or minimal framework visual
+6. Strong close: headline dominant, handle and progress indicator
+
+---
+
+## SLIDE-BY-SLIDE DESIGN DIRECTION
+
+SLIDE 1 — THE HOOK
+- Eyebrow: "IDENTITY" (muted gold, uppercase)
+- Dark background (#0A0A0A)
+- Headline: large, dominant, slightly left of center
+- Below headline: 2-line subtext in secondary text color
+- Bottom left: @polynovea in muted text
+- Bottom center: progress dots (dot 1 active in gold)
+- Layout feel: cinematic opening, spacious
+
+SLIDE 2 — WHAT IT IS NOT
+- Eyebrow: "NOT THIS" (muted gold)
+- Slightly elevated background (#121212)
+- Headline: bold, declarative
+- Below: short body paragraph
+- Visual detail: a subtle horizontal rule in border color (#27272A) separating headline and body
+- Layout feel: editorial, structured rejection
+
+SLIDE 3 — WHAT IT IS
+- Eyebrow: "THIS" (use violet #7C3AED for this eyebrow only — the only violet usage in this carousel)
+- Background: #0A0A0A
+- Headline: largest typography in the carousel — this is the key identity statement
+- Body: 2 short lines beneath
+- Layout feel: maximum visual weight, this is the center of gravity of the carousel
+
+SLIDE 4 — THE INTELLECTUAL CORE
+- Eyebrow: "THE GAP" (muted gold)
+- Background: #121212
+- Headline splits into two lines for emphasis
+- Body: 3 short lines, analytical
+- Visual detail: a minimal 3-item vertical stack or simple framework structure in card surface color (#18181B) with border — showing: Pattern → Intelligence → Decision
+- Layout feel: analytical, structured
+
+SLIDE 5 — THE PROVING GROUND
+- Eyebrow: "PHASE 1" (muted gold)
+- Background: #0A0A0A
+- Headline: medium scale
+- Body: operational explanation, 2–3 lines
+- Visual detail: a small label strip or tag showing "Live Environments" as a category marker
+- Layout feel: operational, grounded
+
+SLIDE 6 — THE CLOSE
+- Eyebrow: "POLYNOVEA" (muted gold, slightly larger at 11px)
+- Background: #0A0A0A
+- Headline: strong, final, authoritative — uses gold color (#E6D3A3) for headline text only on this slide
+- Body: 2 lines beneath in secondary text
+- Bottom: @polynovea handle left, progress dots center
+- Layout feel: conclusive, institutional, premium
+
+---
+
+## PROGRESS DOTS
+
+Each slide shows its position in the sequence via dots at the bottom center.
+
+- Dot size: 5px circle
+- Active dot: #E6D3A3 (gold), 5px
+- Inactive dots: #27272A (border color), 5px
+- Gap between dots: 6px
+- Position: 12px from bottom edge, centered
+
+---
+
+## VISUAL DETAIL SYSTEM
+
+Use these sparingly to add depth without clutter:
+
+- Horizontal rules: 1px, #27272A, full width — for section separation
+- Minimal card blocks: #18181B background, 1px border #27272A, 6px border radius
+- Label tags: small rounded pill in #18181B with 1px gold border, 10px Clash Display text
+- Flow arrows: only on slide 4, in violet (#7C3AED), minimal and clean
+
+Avoid:
+- Stock-style imagery
+- Icon overload
+- Gradient backgrounds
+- Drop shadows that feel soft or corporate
+- Decorative elements without structural purpose
+
+---
+
+## MOTION
+
+No animations required for this output.
+
+Generate a static HTML file with all 6 slides rendered vertically in sequence.
+
+Each slide should be visually complete as a standalone unit and work as a screenshot for Instagram posting.
+
+---
+
+## FINAL OUTPUT QUALITY
+
+The carousel should feel like:
+- a premium institutional company announcement
+- intelligence infrastructure brand, not startup brand
+- editorial restraint with clear visual confidence
+- something that signals the company is serious before it says a word
+
+NOT:
+- a Canva template
+- a SaaS product launch
+- a startup Instagram
+- a music label post

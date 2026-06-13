@@ -1,0 +1,115 @@
+You are designing a premium Instagram carousel for the personal brand of Subrojit Roy (@subrojitroy).
+
+The visual system must communicate:
+- systems thinking
+- builder/operator perspective
+- analytical clarity
+- zero fluff
+
+NOT:
+- influencer content
+- startup cliches
+- emotional storytelling
+- decorative clutter
+
+## FORMAT
+Each slide:
+- Width: 420px
+- Height: 525px (4:5 ratio)
+- Slides count: 5 to 7 slides
+- All slides rendered in a single complete HTML page stacked vertically
+- Each slide uses class="slide"
+
+## COLOR SYSTEM
+Background layers:
+- Primary background: #0A0A0A
+- Elevated surface: #121212
+- Card surface: #18181B
+- Border: #27272A
+Typography:
+- Primary text: #F5F5F5 (white headlines)
+- Secondary text: #A1A1AA (body copy)
+- Muted text: #71717A
+Accent layers:
+- Authority accent (gold): #E6D3A3
+- Muted gold: #9A8F6A
+- Depth accent (violet): #7C3AED
+
+Rules:
+- Dark background throughout
+- White text for headlines, muted gold/grey for eyebrows
+- Violet and gold accents used strictly for highlight elements (borders, diagrams)
+
+## TYPOGRAPHY
+Fonts:
+- Clash Display — all headlines and eyebrow labels
+- Inter — all body copy
+
+Load fonts via:
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap" rel="stylesheet">
+
+Scale hierarchy:
+- Eyebrow label: Clash Display, 10px, uppercase, letter-spacing: 0.15em, color: #9A8F6A
+- Headline H1: Clash Display, 26–32px, weight 600, primary text (#F5F5F5)
+- Body copy: Inter, 13–15px, weight 400, secondary text (#A1A1AA), line-height: 1.7
+- Counter / Handle: Inter, 10px, #71717A
+
+## LAYOUT SYSTEM
+- 36px padding on all sides
+- Top zone: eyebrow label (left) + slide counter (right)
+- Mid zone: headline (left-aligned)
+- Lower zone: body copy and supporting structured diagram or list
+- Bottom center: progress dots (dot size 5px, active dot gold, inactive border color)
+
+## VISUAL DETAIL SYSTEM
+Use these for diagrams:
+- Horizontal rules: 1px, #27272A
+- Card blocks: #18181B background, 1px border #27272A, 6px border-radius
+- Flow arrows: violet (#7C3AED)
+- Status indicators: gold checkmark (✓) or arrow (→)
+
+## VISUAL COMPONENT LIBRARY
+When a slide's lower zone needs a "supporting structured diagram or list," use ONE
+of these content-ful patterns — adapt numbers/labels/text to the slide's point.
+Every pattern renders with real content. Never substitute an empty box or placeholder card.
+
+1. METRIC CARD — large numeral + small label:
+<div style="background:#18181B;border:1px solid #27272A;border-radius:6px;padding:16px 18px;display:inline-block;">
+  <div style="font-family:'Clash Display';font-size:28px;font-weight:600;color:#E6D3A3;line-height:1;">3.2x</div>
+  <div style="font-family:Inter;font-size:10px;color:#A1A1AA;margin-top:6px;letter-spacing:0.05em;">Faster decision cycles</div>
+</div>
+
+2. FLOW ROW — 2-4 labeled nodes connected by violet arrows:
+<div style="display:flex;align-items:center;gap:8px;">
+  <div style="background:#18181B;border:1px solid #27272A;border-radius:6px;padding:8px 12px;font-family:Inter;font-size:10px;color:#E6D3A3;">Input</div>
+  <span style="color:#7C3AED;font-size:13px;">&#8594;</span>
+  <div style="background:#18181B;border:1px solid #27272A;border-radius:6px;padding:8px 12px;font-family:Inter;font-size:10px;color:#E6D3A3;">Output</div>
+</div>
+
+3. STATUS LIST — vertical list with gold checkmarks/arrows + text label:
+<div style="display:flex;flex-direction:column;gap:8px;">
+  <div style="display:flex;align-items:center;gap:10px;font-family:Inter;font-size:12px;color:#F5F5F5;">
+    <span style="color:#E6D3A3;">&#10003;</span> Shipped the first version
+  </div>
+  <div style="display:flex;align-items:center;gap:10px;font-family:Inter;font-size:12px;color:#A1A1AA;">
+    <span style="color:#9A8F6A;">&#8594;</span> Next: scale to 10 venues
+  </div>
+</div>
+
+HARD RULE — NO EMPTY CONTAINERS:
+Never output a <div> or container that has no text content, no <svg>, and no
+background-image/gradient/pattern. Every element in the lower zone must either
+(a) contain real text or numbers, or (b) be one of the Visual Component Library
+patterns above, fully populated with content. Thin 1px horizontal rule lines and
+progress dots are exempt. If a slide's content doesn't naturally fill the canvas,
+use a smaller, more centered headline-dominant layout rather than adding a
+decorative empty space-filler.
+
+## OUTPUT
+Generate a single complete HTML file with all slides stacked vertically.
+No truncation. No markdown, no code fences, no commentary.
+
+Before returning, verify: no slide contains an empty placeholder div/box — every
+lower-zone element either has text/numbers or is a fully populated Visual Component
+Library pattern.

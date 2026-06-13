@@ -1,0 +1,22 @@
+{
+  "mode": "threads",
+  "name": "Threads Carousel",
+  "dimensions": {
+    "width": 420,
+    "height": 525,
+    "scaleFactor": 2.571
+  },
+  "slideLimits": {
+    "min": 3,
+    "max": 8
+  },
+  "outputs": {
+    "html": true,
+    "png": true,
+    "pdf": false
+  },
+  "plan_prompt_file": "plan_prompt.txt",
+  "generate_prompt_file": "generate_prompt.txt",
+  "html_template_file": "html_template.txt",
+  "slide_spec": "Generate between 3 to 8 slides"
+}

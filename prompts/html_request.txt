@@ -1,0 +1,292 @@
+You are designing a premium editorial-style HTML presentation system for Polynovea Intelligence Systems.
+
+The output must feel closer to:
+
+* Apple keynote editorial direction
+* high-end strategy consulting decks
+* cinematic design systems
+* modern intelligence reports
+* premium visual storytelling systems
+
+DO NOT create generic presentation slides.
+
+The system must behave like editorial art direction with cinematic layout composition.
+
+---
+
+## CORE VISUAL OBJECTIVE
+
+The presentation must feel:
+
+* structured
+* intelligent
+* premium
+* cinematic
+* spacious
+* visually balanced
+* compositionally intentional
+
+Avoid:
+
+* template aesthetics
+* top-heavy layouts
+* centered PowerPoint compositions
+* repetitive structures
+* empty lower halves
+* generic corporate visuals
+* clutter
+* decorative randomness
+
+---
+
+## DESIGN SYSTEM
+
+Typography:
+
+* Use Clash Display for all headlines
+* Use Inter for body copy
+* Large editorial typography
+* Strong visual hierarchy
+* Tight display tracking
+* Wide breathing room
+
+Color System:
+
+* Background: #ECE9E1
+* Primary text: #0A0A0A
+* Secondary text: #475569
+* Gold accent: #C6A15B
+* Purple accent: #7C3AED
+* Border/background cards:
+  rgba(0,0,0,0.04)
+
+Spacing:
+
+* Strict spacing system
+* Large negative space
+* Consistent rhythm
+* Strong visual breathing room
+* Every spacing value must feel intentional
+
+---
+
+## COMPOSITION RULES
+
+This is NOT a slide deck.
+This is a cinematic editorial sequence.
+
+Every scene must:
+
+* use the full canvas
+* distribute visual weight properly
+* occupy upper, middle, and lower frame regions
+* avoid isolated content clusters
+* create optical balance
+* guide the eye naturally
+
+Avoid layouts where:
+
+* all content sits at the top
+* bottom half is empty
+* text floats without anchors
+* every scene looks identical
+
+---
+
+## SAFE ZONES
+
+Protect all display typography.
+
+Eyebrow labels such as:
+
+* Observation
+* Problem
+* Framework
+* System
+* Revenue
+* Intelligence
+
+must NEVER overlap headline regions.
+
+Maintain clear exclusion zones around:
+
+* H1 typography
+* hero statements
+* editorial titles
+
+---
+
+## SCENE VARIATION SYSTEM
+
+Vary layouts aggressively across scenes.
+
+Use a combination of:
+
+1. Full-width thesis scenes
+2. Split-grid editorial scenes
+3. Lower-third anchored scenes
+4. Cinematic whitespace scenes
+5. Dual-column intelligence layouts
+6. Framework architecture scenes
+7. Floating insight module scenes
+8. Metric-heavy analytical scenes
+9. Transition scenes
+10. Asymmetric editorial compositions
+
+No two consecutive scenes should feel structurally identical.
+
+---
+
+## VISUAL RHYTHM
+
+Alternate pacing intentionally:
+
+dense
+→ spacious
+→ cinematic
+→ informational
+→ minimal
+→ analytical
+→ spacious
+
+Create narrative cadence like filmmaking.
+
+---
+
+## LOWER CANVAS UTILIZATION
+
+Every scene must contain at least one lower-frame visual anchor.
+
+Examples:
+
+* framework cards
+* split modules
+* insight panels
+* data structures
+* quote blocks
+* process architecture
+* visual grids
+* layered cards
+* floating metrics
+
+Avoid empty lower halves.
+
+---
+
+## HEADLINE SYSTEM
+
+Headlines must:
+
+* dominate visually
+* use large scale typography
+* occupy meaningful spatial weight
+* feel cinematic and intentional
+
+Use:
+
+* max-width constraints
+* balanced line wrapping
+* optical alignment
+* asymmetrical positioning
+
+Avoid:
+
+* overly long line lengths
+* weak hierarchy
+* tiny typography
+
+---
+
+## EDITORIAL STRUCTURE
+
+Think like magazine art direction.
+
+Use:
+
+* asymmetry
+* tension
+* controlled whitespace
+* layered composition
+* anchored structures
+* visual pacing
+* hierarchy shifts
+
+The deck should feel designed, not generated.
+
+---
+
+## CONTENT STRUCTURE
+
+SECTION A
+Behavioral Intelligence Framework and Acquisition
+
+Focus:
+
+* behavioral data
+* acquisition intelligence
+* segmentation
+* environmental alignment
+* targeting precision
+* customer fit
+* intelligence systems
+* behavioral mapping
+
+SECTION B
+Revenue Optimization and Show Engineering
+
+Focus:
+
+* operational intelligence
+* venue optimization
+* environmental variables
+* friction reduction
+* measurable behavioral outcomes
+* retention systems
+* repeatability
+* optimization loops
+* commercial engineering
+
+---
+
+## MOTION LANGUAGE
+
+Motion should feel:
+
+* restrained
+* smooth
+* cinematic
+* premium
+
+Avoid:
+
+* flashy motion
+* excessive effects
+* startup-style animations
+
+Use:
+
+* subtle fade
+* opacity transitions
+* stagger systems
+* smooth transforms
+* editorial pacing
+
+---
+
+## FINAL OUTPUT QUALITY
+
+The final result must feel like:
+
+* a premium intelligence ecosystem
+* a cinematic strategic report
+* a world-class editorial system
+* a sophisticated operational framework
+
+NOT:
+
+* a startup pitch deck
+* a Canva template
+* a generic corporate presentation
+* a standard slide carousel
+
+Every frame should feel intentional, spatially balanced, and visually directed.

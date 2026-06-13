@@ -1,0 +1,23 @@
+{
+  "mode": "linkedin",
+  "name": "LinkedIn Document Carousel",
+  "dimensions": {
+    "width": 540,
+    "height": 540,
+    "scaleFactor": 2.0
+  },
+  "slideLimits": {
+    "min": 7,
+    "max": 7
+  },
+  "outputs": {
+    "html": true,
+    "png": true,
+    "pdf": true
+  },
+  "pdfNameTemplate": "Polynovea_LinkedIn_{projectName}.pdf",
+  "plan_prompt_file": "plan_prompt.txt",
+  "generate_prompt_file": "generate_prompt.txt",
+  "html_template_file": "html_template.txt",
+  "slide_spec": "Generate exactly 7 slides"
+}

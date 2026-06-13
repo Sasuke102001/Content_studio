@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #050505;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 40px 20px;
+  font-family: 'Space Grotesk', sans-serif;
+}
+.serif { font-family: 'Cormorant Garamond', serif; }
+.sans  { font-family: 'Space Grotesk', sans-serif; }
+
+.ig-frame {
+  width: 420px;
+  max-width: 420px;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.8);
+  background: #141414;
+}
+.ig-header {
+  display: flex; align-items: center; gap: 10px;
+  padding: 12px 16px;
+  background: #141414;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.ig-avatar {
+  width: 34px; height: 34px; border-radius: 50%;
+  background: #E6D3A3;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.ig-avatar-letter { font-family: 'Cormorant Garamond', serif; font-size: 16px; font-weight: 700; color: #0A0A0A; }
+.ig-info { display: flex; flex-direction: column; gap: 1px; }
+.ig-handle { font-size: 13px; font-weight: 600; color: #F5F5F5; }
+.ig-sub    { font-size: 11px; color: #A1A1AA; }
+.ig-more   { margin-left: auto; font-size: 20px; color: #A1A1AA; line-height: 1; letter-spacing: 1px; }
+
+.carousel-viewport {
+  width: 420px; height: 525px;
+  overflow: hidden; cursor: grab; position: relative;
+}
+.carousel-viewport:active { cursor: grabbing; }
+.carousel-track {
+  display: flex; height: 525px;
+  transition: transform 0.38s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform;
+}
+.slide {
+  width: 420px; height: 525px;
+  flex-shrink: 0; position: relative;
+  display: flex; flex-direction: column; overflow: hidden;
+}
+
+.ig-dots {
+  display: flex; justify-content: center; gap: 4px;
+  padding: 10px 16px; background: #141414;
+}
+.dot {
+  height: 6px; width: 6px; border-radius: 3px;
+  background: rgba(255,255,255,0.15);
+  transition: all 0.3s ease;
+}
+.dot.active { width: 20px; background: #E6D3A3; }
+
+.ig-actions {
+  display: flex; align-items: center; gap: 14px;
+  padding: 10px 16px 6px; background: #141414;
+}
+.ig-save { margin-left: auto; }
+.ig-caption { padding: 4px 16px 18px; background: #141414; }
+.ig-caption p   { font-size: 13px; color: #A1A1AA; line-height: 1.55; }
+.ig-caption strong { color: #F5F5F5; }
+.ig-caption .time  { font-size: 11px; color: rgba(161,161,170,0.4); margin-top: 6px; }
+
+.pbar {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 16px 28px 20px; z-index: 10;
+  display: flex; align-items: center; gap: 10px;
+}
+.pbar-track { flex: 1; height: 2px; background: rgba(255,255,255,0.1); border-radius: 2px; overflow: hidden; }
+.pbar-fill  { height: 100%; background: rgba(230,211,163,0.75); border-radius: 2px; }
+.pbar-label { font-family: 'Space Grotesk', sans-serif; font-size: 10px; font-weight: 500; color: rgba(255,255,255,0.28); }
+
+.sarrow {
+  position: absolute; right: 0; top: 0; bottom: 0; width: 48px; z-index: 9;
+  display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(to right, transparent, rgba(255,255,255,0.05));
+}
+.tag {
+  display: block;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 9px; font-weight: 600; letter-spacing: 2.8px;
+  text-transform: uppercase; color: rgba(230,211,163,0.5);
+  margin-bottom: 20px;
+}
+.logo-lockup {
+  position: absolute; top: 28px; left: 36px;
+  display: flex; align-items: center; gap: 10px;
+}
+.logo-circle {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: #E6D3A3;
+  display: flex; align-items: center; justify-content: center;
+}
+.logo-letter { font-family: 'Cormorant Garamond', serif; font-size: 14px; font-weight: 700; color: #0A0A0A; }
+.logo-name {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 1.8px; color: rgba(230,211,163,0.65); text-transform: uppercase;
+}
+.gold-line { width: 36px; height: 1px; background: rgba(230,211,163,0.45); }
+.chevron {
+  width: 18px; height: 18px; viewBox: 0 0 24 24; fill: none;
+}
+</style>
+</head>
+<body>
+<div class="ig-frame">
+
+  <div class="ig-header">
+    <div class="ig-avatar"><span class="ig-avatar-letter">P</span></div>
+    <div class="ig-info">
+      <span class="ig-handle">polynovearecords</span>
+      <span class="ig-sub sans">Live Performance System</span>
+    </div>
+    <span class="ig-more">...</span>
+  </div>
+
+  <div class="carousel-viewport" id="viewport">
+    <div class="carousel-track" id="track">
+
+      <!-- SLIDE 1: HOOK — venue's problem, stated plainly -->
+      <div class="slide" style="background:#0A0A0A; justify-content:flex-end; padding:0 36px 52px;">
+        <div class="logo-lockup">
+          <div class="logo-circle"><span class="logo-letter">P</span></div>
+          <span class="logo-name">Polynovea Records</span>
+        </div>
+        <div style="position:absolute;top:0;right:80px;width:1px;height:50%;background:linear-gradient(to bottom,transparent,rgba(230,211,163,0.1),transparent);"></div>
+        <div>
+          <span class="tag">The Venue Problem</span>
+          <h1 class="serif" style="font-size:34px;font-weight:600;color:#F5F5F5;line-height:1.12;letter-spacing:-0.4px;margin-bottom:18px;">
+            Live music is costing venues money it never returns.
+          </h1>
+          <div class="gold-line" style="margin-bottom:14px;"></div>
+          <p class="sans" style="font-size:12px;color:#A1A1AA;letter-spacing:0.3px;line-height:1.55;">
+            Not because music does not work. Because no one has designed it to.
+          </p>
+        </div>
+        <div class="pbar">
+          <div class="pbar-track"><div class="pbar-fill" style="width:14.28%;"></div></div>
+          <span class="pbar-label">1/7</span>
+        </div>
+        <div class="sarrow">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <path d="M9 6l6 6-6 6" stroke="rgba(255,255,255,0.22)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- SLIDE 2: PROBLEM — what venues actually experience -->
+      <div class="slide" style="background:#111111; justify-content:flex-end; padding:0 36px 52px;">
+        <span class="tag">What Venues Experience</span>
+        <h2 class="serif" style="font-size:24px;font-weight:600;color:#F5F5F5;line-height:1.2;margin-bottom:22px;">
+          Every time. Every gig.
+        </h2>
+        <div style="display:flex;flex-direction:column;">
+          <div style="padding:13px 0;border-top:1px solid rgba(255,255,255,0.07);display:flex;align-items:center;gap:14px;">
+            <div style="width:3px;height:3px;border-radius:50%;background:#E6D3A3;flex-shrink:0;"></div>
+            <span class="sans" style="font-size:14px;color:#F5F5F5;line-height:1.4;">Tables turn at the same rate.</span>
+          </div>
+          <div style="padding:13px 0;border-top:1px solid rgba(255,255,255,0.07);display:flex;align-items:center;gap:14px;">
+            <div style="width:3px;height:3px;border-radius:50%;background:#E6D3A3;flex-shrink:0;"></div>
+            <span class="sans" style="font-size:14px;color:#F5F5F5;line-height:1.4;">Customers leave at the same time.</span>
+          </div>
+          <div style="padding:13px 0;border-top:1px solid rgba(255,255,255,0.07);display:flex;align-items:center;gap:14px;">
+            <div style="width:3px;height:3px;border-radius:50%;background:#E6D3A3;flex-shrink:0;"></div>
+            <span class="sans" style="font-size:14px;color:#F5F5F5;line-height:1.4;">Orders follow the same pattern.</span>
+          </div>
+          <div style="padding:13px 0;border-top:1px solid rgba(255,255,255,0.07);border-bottom:1px solid rgba(255,255,255,0.07);display:flex;align-items:center;gap:14px;">
+            <div style="width:3px;height:3px;border-radius:50%;background:#E6D3A3;flex-shrink:0;"></div>
+            <span class="sans" style="font-size:14px;color:#A1A1AA;line-height:1.4;">The music made no measurable difference.</span>
+          </div>
+        </div>
+        <div class="pbar">
+          <div class="pbar-track"><div class="pbar-fill" style="width:28.57%;"></div></div>
+          <span class="pbar-label">2/7</span>
+        </div>
+        <div class="sarrow">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <path d="M9 6l6 6-6 6" stroke="rgba(255,255,255,0.22)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- SLIDE 3: CONTRADICTION — venues pay, performers just show up -->
+      <div class="slide" style="background:#0D0D0D; justify-content:center; padding:0 36px 52px;">
+        <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(to right,transparent,rgba(230,211,163,0.18),transparent);"></div>
+        <div>
+          <span class="tag">The Real Gap</span>
+          <h2 class="serif" style="font-size:32px;font-weight:600;color:#F5F5F5;line-height:1.12;letter-spacing:-0.3px;margin-bottom:10px;">
+            Venues pay for performance.
+          </h2>
+          <h2 class="serif" style="font-size:32px;font-weight:300;color:#A1A1AA;line-height:1.12;letter-spacing:-0.3px;font-style:italic;margin-bottom:28px;">
+            Performers just show up.
+          </h2>
+          <div class="gold-line"></div>
+          <p class="sans" style="font-size:11px;color:rgba(161,161,170,0.6);margin-top:18px;line-height:1.6;letter-spacing:0.2px;">No structure. No measurement. No accountability to the room.</p>
+        </div>
+        <div class="pbar">
+          <div class="pbar-track"><div class="pbar-fill" style="width:42.86%;"></div></div>
+          <span class="pbar-label">3/7</span>
+        </div>
+        <div class="sarrow">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <path d="M9 6l6 6-6 6" stroke="rgba(255,255,255,0.22)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- SLIDE 4: REFRAME — music can be a variable, from the performer side -->
+      <div class="slide" style="background:#111111; justify-content:center; padding:0 36px 52px;">
+        <div style="position:absolute;top:28px;left:36px;width:16px;height:1px;background:rgba(230,211,163,0.3);"></div>
+        <div style="position:absolute;top:28px;left:36px;width:1px;height:16px;background:rgba(230,211,163,0.3);"></div>
+        <div style="position:absolute;bottom:60px;right:36px;width:16px;height:1px;background:rgba(230,211,163,0.3);"></div>
+        <div style="position:absolute;bottom:60px;right:35px;width:1px;height:16px;background:rgba(230,211,163,0.3);"></div>
+        <div>
+          <span class="tag">The Shift</span>
+          <p class="serif" style="font-size:21px;font-weight:400;color:#A1A1AA;line-height:1.25;margin-bottom:10px;letter-spacing:-0.2px;">
+            Music is not the problem.
+          </p>
+          <p class="serif" style="font-size:38px;font-weight:600;color:#E6D3A3;line-height:1.05;letter-spacing:-0.6px;margin-bottom:16px;">
+            The absence of structure is.
+          </p>
+          <p class="sans" style="font-size:11px;color:rgba(161,161,170,0.55);line-height:1.6;letter-spacing:0.2px;">Performance without operational intent is entertainment. Nothing more.</p>
+        </div>
+        <div class="pbar">
+          <div class="pbar-track"><div class="pbar-fill" style="width:57.14%;"></div></div>
+          <span class="pbar-label">4/7</span>
+        </div>
+        <div class="sarrow">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <path d="M9 6l6 6-6 6" stroke="rgba(255,255,255,0.22)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- SLIDE 5: INSIGHT — what if the performer came with a system -->
+      <div class="slide" style="background:#0A0A0A; justify-content:center; padding:0 36px 52px;">
+        <div style="position:absolute;left:36px;top:50%;width:1px;height:90px;background:linear-gradient(to bottom,transparent,rgba(230,211,163,0.15),transparent);transform:translateY(-45px);"></div>
+        <div style="padding-left:20px;">
+          <span class="tag">Consider This</span>
+          <h2 class="serif" style="font-size:29px;font-weight:400;color:#F5F5F5;line-height:1.22;letter-spacing:-0.3px;font-style:italic;margin-bottom:20px;">
+            What if the performer arrived with a system designed around your revenue?
+          </h2>
+          <div class="gold-line"></div>
+        </div>
+        <div class="pbar">
+          <div class="pbar-track"><div class="pbar-fill" style="width:71.43%;"></div></div>
+          <span class="pbar-label">5/7</span>
+        </div>
+        <div class="sarrow">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <path d="M9 6l6 6-6 6" stroke="rgba(255,255,255,0.22)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- SLIDE 6: POSITIONING — Polynovea as the solution from performer side -->
+      <div class="slide" style="background:#111111; justify-content:flex-end; padding:0 36px 52px;">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(to right,#E6D3A3,rgba(230,211,163,0.15),transparent);"></div>
+        <div>
+          <span class="tag">Polynovea Model</span>
+          <h2 class="serif" style="font-size:26px;font-weight:600;color:#F5F5F5;line-height:1.22;letter-spacing:-0.2px;margin-bottom:10px;">
+            Operational structure, built into live performance — delivered from the performer side.
+          </h2>
+          <p class="sans" style="font-size:11px;color:#A1A1AA;line-height:1.6;margin-bottom:20px;">Baseline mapping. Controlled sessions. Behavioral tracking. Decisions every gig.</p>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <span class="sans" style="font-size:9px;padding:5px 12px;border:1px solid rgba(230,211,163,0.22);border-radius:20px;color:rgba(230,211,163,0.55);letter-spacing:1px;text-transform:uppercase;">Structured</span>
+            <span class="sans" style="font-size:9px;padding:5px 12px;border:1px solid rgba(230,211,163,0.22);border-radius:20px;color:rgba(230,211,163,0.55);letter-spacing:1px;text-transform:uppercase;">Measured</span>
+            <span class="sans" style="font-size:9px;padding:5px 12px;border:1px solid rgba(230,211,163,0.22);border-radius:20px;color:rgba(230,211,163,0.55);letter-spacing:1px;text-transform:uppercase;">Optimized</span>
+          </div>
+        </div>
+        <div class="pbar">
+          <div class="pbar-track"><div class="pbar-fill" style="width:85.71%;"></div></div>
+          <span class="pbar-label">6/7</span>
+        </div>
+        <div class="sarrow">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <path d="M9 6l6 6-6 6" stroke="rgba(255,255,255,0.22)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- SLIDE 7: CLOSE — venue has the room, Polynovea brings the system -->
+      <div class="slide" style="background:#0A0A0A; justify-content:center; padding:0 36px 52px;">
+        <div class="logo-lockup">
+          <div class="logo-circle"><span class="logo-letter">P</span></div>
+          <span class="logo-name">Polynovea Records</span>
+        </div>
+        <div style="position:absolute;bottom:60px;left:36px;right:36px;height:1px;background:linear-gradient(to right,rgba(230,211,163,0.15),transparent);"></div>
+        <div>
+          <p class="serif" style="font-size:38px;font-weight:600;color:#F5F5F5;line-height:1.08;letter-spacing:-0.5px;margin-bottom:8px;">
+            You have the venue.
+          </p>
+          <p class="serif" style="font-size:38px;font-weight:600;color:#E6D3A3;line-height:1.08;letter-spacing:-0.5px;margin-bottom:28px;">
+            We bring the system.
+          </p>
+          <div class="gold-line"></div>
+        </div>
+        <div class="pbar">
+          <div class="pbar-track"><div class="pbar-fill" style="width:100%;background:rgba(230,211,163,0.9);"></div></div>
+          <span class="pbar-label">7/7</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="ig-dots" id="dots">
+    <div class="dot active" data-i="0"></div>
+    <div class="dot" data-i="1"></div>
+    <div class="dot" data-i="2"></div>
+    <div class="dot" data-i="3"></div>
+    <div class="dot" data-i="4"></div>
+    <div class="dot" data-i="5"></div>
+    <div class="dot" data-i="6"></div>
+  </div>
+
+  <div class="ig-actions">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F5F5F5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F5F5F5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F5F5F5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+    <svg class="ig-save" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F5F5F5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+  </div>
+
+  <div class="ig-caption">
+    <p><strong>polynovearecords</strong> You have the venue. We bring the system. Live performance with operational structure, delivered from the performer side.</p>
+    <p class="time">2 HOURS AGO</p>
+  </div>
+
+</div>
+
+<script>
+const track = document.getElementById('track');
+const viewport = document.getElementById('viewport');
+const dots = document.querySelectorAll('.dot');
+let current = 0, startX = 0, isDragging = false;
+const TOTAL = 7;
+function goTo(i) {
+  current = Math.max(0, Math.min(TOTAL - 1, i));
+  track.style.transform = 'translateX(' + (-current * 420) + 'px)';
+  dots.forEach((d, j) => d.classList.toggle('active', j === current));
+}
+viewport.addEventListener('mousedown', e => { startX = e.clientX; isDragging = true; });
+viewport.addEventListener('mousemove', e => {
+  if (!isDragging) return;
+  const dx = e.clientX - startX;
+  if (Math.abs(dx) > 4) track.style.transition = 'none';
+  track.style.transform = 'translateX(' + (-current * 420 + dx) + 'px)';
+});
+function endDrag(e) {
+  if (!isDragging) return;
+  isDragging = false;
+  track.style.transition = 'transform 0.38s cubic-bezier(0.25,0.46,0.45,0.94)';
+  const clientX = e.clientX !== undefined ? e.clientX : startX;
+  const dx = clientX - startX;
+  if (dx < -50) goTo(current + 1);
+  else if (dx > 50) goTo(current - 1);
+  else goTo(current);
+}
+viewport.addEventListener('mouseup', endDrag);
+viewport.addEventListener('mouseleave', endDrag);
+dots.forEach(d => d.addEventListener('click', () => goTo(+d.dataset.i)));
+</script>
+</body>
+</html>

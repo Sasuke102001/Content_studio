@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polynovea Typography Scale</title>
+    <link rel="preload" href="uploads/ClashDisplay-Variable.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="preload" href="https://rsms.me/inter/inter.css">
+    <style>
+        @font-face {
+            font-family: "Clash Display";
+            src: url("uploads/ClashDisplay-Variable.ttf") format("truetype-variations");
+            font-weight: 200 700;
+        }
+
+        @import url('https://rsms.me/inter/inter.css');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background: #0A0A0A;
+            color: #F5F5F5;
+            padding: 80px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            margin-bottom: 80px;
+            border-bottom: 1px solid #27272A;
+            padding-bottom: 60px;
+        }
+
+        h1 {
+            font-family: "Clash Display", sans-serif;
+            font-size: 56px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #F5F5F5;
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #A1A1AA;
+            margin-bottom: 8px;
+            font-weight: 400;
+        }
+
+        .section {
+            margin-bottom: 80px;
+        }
+
+        h2 {
+            font-family: "Clash Display", sans-serif;
+            font-size: 40px;
+            font-weight: 600;
+            margin: 60px 0 40px 0;
+            color: #E6D3A3;
+            line-height: 1.2;
+        }
+
+        .scale-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 48px;
+        }
+
+        .style-card {
+            background: #18181B;
+            border: 1px solid #27272A;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .style-card:hover {
+            border-color: #7C3AED;
+            box-shadow: 0 8px 24px rgba(124, 58, 237, 0.15);
+        }
+
+        .sample-area {
+            padding: 48px;
+            background: #0A0A0A;
+            border-bottom: 1px solid #27272A;
+            min-height: 140px;
+            display: flex;
+            align-items: center;
+        }
+
+        .sample-display {
+            width: 100%;
+        }
+
+        .style-specs {
+            padding: 24px;
+        }
+
+        .style-name {
+            font-family: "Clash Display", sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            color: #E6D3A3;
+            margin-bottom: 16px;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 16px;
+            font-size: 13px;
+        }
+
+        .spec-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .spec-label {
+            color: #71717A;
+            font-weight: 500;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 11px;
+        }
+
+        .spec-value {
+            color: #F5F5F5;
+            font-family: "Courier New", monospace;
+            font-weight: 600;
+            font-size: 13px;
+        }
+
+        .spec-value.mono {
+            font-size: 12px;
+        }
+
+        /* Typography styles */
+        .style-display {
+            font-family: "Clash Display", sans-serif;
+            font-size: 72px;
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -1.2px;
+            color: #F5F5F5;
+        }
+
+        .style-h1 {
+            font-family: "Clash Display", sans-serif;
+            font-size: 56px;
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: -0.8px;
+            color: #F5F5F5;
+        }
+
+        .style-h2 {
+            font-family: "Clash Display", sans-serif;
+            font-size: 40px;
+            font-weight: 600;
+            line-height: 1.25;
+            letter-spacing: -0.4px;
+            color: #F5F5F5;
+        }
+
+        .style-h3 {
+            font-family: "Clash Display", sans-serif;
+            font-size: 28px;
+            font-weight: 600;
+            line-height: 1.3;
+            letter-spacing: 0px;
+            color: #F5F5F5;
+        }
+
+        .style-h4 {
+            font-family: "Clash Display", sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+            line-height: 1.4;
+            letter-spacing: 0.3px;
+            color: #F5F5F5;
+        }
+
+        .style-lead {
+            font-family: 'Inter', sans-serif;
+            font-size: 20px;
+            font-weight: 500;
+            line-height: 1.5;
+            letter-spacing: 0px;
+            color: #F5F5F5;
+        }
+
+        .style-body {
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1.6;
+            letter-spacing: 0px;
+            color: #F5F5F5;
+        }
+
+        .style-small {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 1.5;
+            letter-spacing: 0.2px;
+            color: #A1A1AA;
+        }
+
+        .style-caption {
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            font-weight: 400;
+            line-height: 1.5;
+            letter-spacing: 0.3px;
+            color: #A1A1AA;
+        }
+
+        .style-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            line-height: 1.4;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            color: #71717A;
+        }
+
+        /* Usage guidelines */
+        .usage {
+            background: rgba(124, 58, 237, 0.1);
+            border-left: 3px solid #7C3AED;
+            padding: 16px;
+            border-radius: 4px;
+            font-size: 13px;
+            color: #A1A1AA;
+            margin-top: 16px;
+            line-height: 1.5;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 32px;
+            font-size: 13px;
+        }
+
+        .comparison-table th {
+            background: #18181B;
+            color: #E6D3A3;
+            padding: 16px;
+            text-align: left;
+            font-weight: 600;
+            border: 1px solid #27272A;
+            font-family: "Clash Display", sans-serif;
+        }
+
+        .comparison-table td {
+            padding: 16px;
+            border: 1px solid #27272A;
+            color: #A1A1AA;
+            font-family: "Courier New", monospace;
+            font-size: 12px;
+        }
+
+        .comparison-table tr:hover {
+            background: #121212;
+        }
+
+        .comparison-table .style-name {
+            font-family: "Clash Display", sans-serif;
+            color: #F5F5F5;
+            margin: 0;
+            font-size: 14px;
+        }
+
+        .scale-category {
+            margin-bottom: 60px;
+        }
+
+        .category-title {
+            font-family: "Clash Display", sans-serif;
+            font-size: 24px;
+            font-weight: 600;
+            color: #E6D3A3;
+            margin: 40px 0 32px 0;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #27272A;
+        }
+
+        .note {
+            background: #18181B;
+            border: 1px solid #27272A;
+            padding: 20px;
+            border-radius: 6px;
+            margin: 32px 0;
+            font-size: 14px;
+            color: #A1A1AA;
+            line-height: 1.6;
+        }
+
+        .note strong {
+            color: #F5F5F5;
+        }
+
+        .meta {
+            background: #18181B;
+            border: 1px solid #27272A;
+            padding: 20px;
+            border-radius: 6px;
+            margin: 32px 0;
+            font-size: 13px;
+            color: #A1A1AA;
+            font-family: "Courier New", monospace;
+        }
+
+        .line-height-demo {
+            background: rgba(124, 58, 237, 0.05);
+            padding: 16px;
+            border-radius: 4px;
+            margin-top: 12px;
+            font-size: 12px;
+            color: #71717A;
+        }
+
+        .visual-sample {
+            margin-top: 24px;
+        }
+
+        .visual-sample p {
+            margin-bottom: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Polynovea Typography Scale</h1>
+            <p class="subtitle">Complete typography system with Clash Display and Inter. Optimized for dark backgrounds and premium positioning.</p>
+        </header>
+
+        <!-- HEADING SCALE -->
+        <div class="scale-category">
+            <div class="category-title">Display & Heading Scale</div>
+
+            <!-- Display -->
+            <div class="style-card">
+                <div class="sample-area">
+                    <div class="sample-display">
+                        <div class="style-display">Design Systems Matter</div>
+                    </div>
+                </div>
+                <div class="style-specs">
+                    <div class="style-name">Display</div>
+                    <div class="specs-grid">
+                        <div class="spec-item">
+                            <span class="spec-label">Font</span>
+                            <span class="spec-value">Clash Display</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Size</span>
+                            <span class="spec-value">72px</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Weight</span>
+                            <span class="spec-value">700</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Line Height</span>
+                            <span class="spec-value">1.1 (79px)</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Letter Spacing</span>
+                            <span class="spec-value">-1.2px</span>
+                        </div>
+                    </div>
+                    <div class="usage"><strong>Usage:</strong> Hero sections, major page titles, premium brand moments. Rarely used. Creates maximum visual impact.</div>
+                </div>
+            </div>
+
+            <!-- H1 -->
+            <div class="style-card">
+                <div class="sample-area">
+                    <div class="sample-display">
+                        <div class="style-h1">Behavioral Intelligence Systems</div>
+                    </div>
+                </div>
+                <div class="style-specs">
+                    <div class="style-name">H1</div>
+                    <div class="specs-grid">
+                        <div class="spec-item">
+                            <span class="spec-label">Font</span>
+                            <span class="spec-value">Clash Display</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Size</span>
+                            <span class="spec-value">56px</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Weight</span>
+                            <span class="spec-value">700</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Line Height</span>
+                            <span class="spec-value">1.2 (67px)</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Letter Spacing</span>
+                            <span class="spec-value">-0.8px</span>
+                        </div>
+                    </div>
+                    <div class="usage"><strong>Usage:</strong> Main page titles, section introductions, primary headings. Creates clear hierarchy and authority.</div>
+                </div>
+            </div>
+
+            <!-- H2 -->
+            <div class="style-card">
+                <div class="sample-area">
+                    <div class="sample-display">
+                        <div class="style-h2">Understanding Operational Patterns</div>
+                    </div>
+                </div>
+                <div class="style-specs">
+                    <div class="style-name">H2</div>
+                    <div class="specs-grid">
+                        <div class="spec-item">
+                            <span class="spec-label">Font</span>
+                            <span class="spec-value">Clash Display</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Size</span>
+                            <span class="spec-value">40px</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Weight</span>
+                            <span class="spec-value">600</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Line Height</span>
+                            <span class="spec-value">1.25 (50px)</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Letter Spacing</span>
+                            <span class="spec-value">-0.4px</span>
+                        </div>
+                    </div>
+                    <div class="usage"><strong>Usage:</strong> Section titles, major content divisions, primary subsections. Most common heading on full pages.</div>
+                </div>
+            </div>
+
+            <!-- H3 -->
+            <div class="style-card">
+                <div class="sample-area">
+                    <div class="sample-display">
+                        <div class="style-h3">System Architecture</div>
+                    </div>
+                </div>
+                <div class="style-specs">
+                    <div class="style-name">H3</div>
+                    <div class="specs-grid">
+                        <div class="spec-item">
+                            <span class="spec-label">Font</span>
+                            <span class="spec-value">Clash Display</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Size</span>
+                            <span class="spec-value">28px</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Weight</span>
+                            <span class="spec-value">600</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Line Height</span>
+                            <span class="spec-value">1.3 (36px)</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Letter Spacing</span>
+                            <span class="spec-value">0px</span>
+                        </div>
+                    </div>
+                    <div class="usage"><strong>Usage:</strong> Subsection headers, card titles, feature headings. Establishes secondary information hierarchy.</div>
+                </div>
+            </div>
+
+            <!-- H4 -->
+            <div class="style-card">
+                <div class="sample-area">
+                    <div class="sample-display">
+                        <div class="style-h4">Data Collection Layer</div>
+                    </div>
+                </div>
+                <div class="style-specs">
+                    <div class="style-name">H4</div>
+                    <div class="specs-grid">
+                        <div class="spec-item">
+                            <span class="spec-label">Font</span>
+                            <span class="spec-value">Clash Display</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Size</span>
+                            <span class="spec-value">20px</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Weight</span>
+                            <span class="spec-value">600</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Line Height</span>
+                            <span class="spec-value">1.4 (28px)</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Letter Spacing</span>
+                            <span class="spec-value">0.3px</span>
+                        </div>
+                    </div>
+                    <div class="usage"><strong>Usage:</strong> Tertiary headings, list item headers, component labels. Smallest heading level while maintaining presence.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BODY SCALE -->
+        <div class="scale-category">
+            <div class="category-title">Body & Reading Scale</div>
+
+            <!-- Lead -->
+            <div class="style-card">
+                <div class="sample-area">
+                    <div class="sample-display">
+                        <div class="style-lead">A structured argument that guides readers through observation, problem, mechanism, framework, and implication.</div>
+                    </div>
+                </div>
+                <div class="style-specs">
+                    <div class="style-name">Lead</div>
+                    <div class="specs-grid">
+                        <div class="spec-item">
+                            <span class="spec-label">Font</span>
+                            <span class="spec-value">Inter</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Size</span>
+                            <span class="spec-value">20px</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Weight</span>
+                            <span class="spec-value">500</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Line Height</span>
+                            <span class="spec-value">1.5 (30px)</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Letter Spacing</span>
+                            <span class="spec-value">0px</span>
+                        </div>
+                    </div>
+                    <div class="usage"><strong>Usage:</strong> Introductory paragraphs, summary text, deck slide subtitles. Creates secondary hierarchy below headings.</div>
+                </div>
+            </div>
+
+            <!-- Body -->
+            <div class="style-card">
+                <div class="sample-area">
+                    <div class="sample-display">
+                        <div class="style-body">
+                            <div class="visual-sample">
+                                <p>The ecosystem operates on one central principle: if behavior cannot be measured, it cannot be reliably optimized. This applies across all operational contexts — from live events to audience retention to conversion mechanics.</p>
+                                <p>Measurement-first thinking creates the foundation for systems that learn and improve. Without baseline clarity, optimization becomes guesswork.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="style-specs">
+                    <div class="style-name">Body</div>
+                    <div class="specs-grid">
+                        <div class="spec-item">
+                            <span class="spec-label">Font</span>
+                            <span class="spec-value">Inter</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Size</span>
+                            <span class="spec-value">16px</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Weight</span>
+                            <span class="spec-value">400</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Line Height</span>
+                            <span class="spec-value">1.6 (26px)</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Letter Spacing</span>
+                            <span class="spec-value">0px</span>
+                        </div>
+                    </div>
+                    <div class="usage"><strong>Usage:</strong> Primary reading text, article paragraphs, content blocks. Default text style for long-form content.</div>
+                </div>
+            </div>
+
+            <!-- Small -->
+            <div class="style-card">
+                <div class="sample-area">
+                    <div class="sample-display">
+                        <div class="style-small">Supporting text and supplementary information. Meta descriptions and additional context that remains readable but secondary to primary content.</div>
+                    </div>
+                </div>
+                <div class="style-specs">
+                    <div class="style-name">Small</div>
+                    <div class="specs-grid">
+                        <div class="spec-item">
+                            <span class="spec-label">Font</span>
+                            <span class="spec-value">Inter</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Size</span>
+                            <span class="spec-value">14px</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Weight</span>
+                            <span class="spec-value">400</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Line Height</span>
+                            <span class="spec-value">1.5 (21px)</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Letter Spacing</span>
+                            <span class="spec-value">0.2px</span>
+                        </div>
+                    </div>
+                    <div class="usage"><strong>Usage:</strong> Secondary body text, helper text, form descriptions, additional context. Slightly reduced hierarchy.</div>
+                </div>
+            </div>
+
+            <!-- Caption -->
+            <div class="style-card">
+                <div class="sample-area">
+                    <div class="sample-display">
+                        <div class="style-caption">Image caption: The decision engine determines opportunity viability based on projected outcomes and strategic fit.</div>
+                    </div>
+                </div>
+                <div class="style-specs">
+                    <div class="style-name">Caption</div>
+                    <div class="specs-grid">
+                        <div class="spec-item">
+                            <span class="spec-label">Font</span>
+                            <span class="spec-value">Inter</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Size</span>
+                            <span class="spec-value">12px</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Weight</span>
+                            <span class="spec-value">400</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Line Height</span>
+                            <span class="spec-value">1.5 (18px)</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Letter Spacing</span>
+                            <span class="spec-value">0.3px</span>
+                        </div>
+                    </div>
+                    <div class="usage"><strong>Usage:</strong> Figure captions, image descriptions, footnotes, small explanatory text. Maintains readability at smaller scale.</div>
+                </div>
+            </div>
+
+            <!-- Label -->
+            <div class="style-card">
+                <div class="sample-area">
+                    <div class="sample-display">
+                        <div class="style-label">Form Label · Required Field · Status Indicator</div>
+                    </div>
+                </div>
+                <div class="style-specs">
+                    <div class="style-name">Label</div>
+                    <div class="specs-grid">
+                        <div class="spec-item">
+                            <span class="spec-label">Font</span>
+                            <span class="spec-value">Inter</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Size</span>
+                            <span class="spec-value">12px</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Weight</span>
+                            <span class="spec-value">600</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Line Height</span>
+                            <span class="spec-value">1.4 (17px)</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Letter Spacing</span>
+                            <span class="spec-value">0.8px</span>
+                        </div>
+                    </div>
+                    <div class="usage"><strong>Usage:</strong> Form labels, UI labels, buttons, tags, badges. Uppercase with increased letter spacing for UI clarity.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- COMPARISON TABLE -->
+        <div class="section">
+            <h2>Complete Scale Reference</h2>
+            <table class="comparison-table">
+                <tr>
+                    <th>Style</th>
+                    <th>Font</th>
+                    <th>Desktop (≥768px)</th>
+                    <th>Mobile (&lt;768px)</th>
+                    <th>Weight</th>
+                    <th>Line Height</th>
+                    <th>Letter Spacing</th>
+                </tr>
+                <tr>
+                    <td><strong>Display</strong></td>
+                    <td>Clash Display</td>
+                    <td>72px</td>
+                    <td>40px</td>
+                    <td>700</td>
+                    <td>1.1</td>
+                    <td>-1.2px</td>
+                </tr>
+                <tr>
+                    <td><strong>H1</strong></td>
+                    <td>Clash Display</td>
+                    <td>56px</td>
+                    <td>36px</td>
+                    <td>700</td>
+                    <td>1.2</td>
+                    <td>-0.8px</td>
+                </tr>
+                <tr>
+                    <td><strong>H2</strong></td>
+                    <td>Clash Display</td>
+                    <td>40px</td>
+                    <td>28px</td>
+                    <td>600</td>
+                    <td>1.25</td>
+                    <td>-0.4px</td>
+                </tr>
+                <tr>
+                    <td><strong>H3</strong></td>
+                    <td>Clash Display</td>
+                    <td>28px</td>
+                    <td>22px</td>
+                    <td>600</td>
+                    <td>1.3</td>
+                    <td>0px</td>
+                </tr>
+                <tr>
+                    <td><strong>H4</strong></td>
+                    <td>Clash Display</td>
+                    <td>20px</td>
+                    <td>18px</td>
+                    <td>600</td>
+                    <td>1.4</td>
+                    <td>0.3px</td>
+                </tr>
+                <tr>
+                    <td><strong>Lead</strong></td>
+                    <td>Inter</td>
+                    <td>20px</td>
+                    <td>18px</td>
+                    <td>500</td>
+                    <td>1.5</td>
+                    <td>0px</td>
+                </tr>
+                <tr>
+                    <td><strong>Body</strong></td>
+                    <td>Inter</td>
+                    <td>16px</td>
+                    <td>16px</td>
+                    <td>400</td>
+                    <td>1.6</td>
+                    <td>0px</td>
+                </tr>
+                <tr>
+                    <td><strong>Small</strong></td>
+                    <td>Inter</td>
+                    <td>14px</td>
+                    <td>14px</td>
+                    <td>400</td>
+                    <td>1.5</td>
+                    <td>0.2px</td>
+                </tr>
+                <tr>
+                    <td><strong>Caption</strong></td>
+                    <td>Inter</td>
+                    <td>12px</td>
+                    <td>12px</td>
+                    <td>400</td>
+                    <td>1.5</td>
+                    <td>0.3px</td>
+                </tr>
+                <tr>
+                    <td><strong>Label</strong></td>
+                    <td>Inter</td>
+                    <td>12px</td>
+                    <td>12px</td>
+                    <td>600</td>
+                    <td>1.4</td>
+                    <td>0.8px</td>
+                </tr>
+            </table>
+
+            <div class="note" style="margin-top: 32px;">
+                <strong>Responsive Behavior:</strong> At breakpoint below 768px, heading sizes scale down to maintain visual hierarchy on smaller screens while preserving readability. Body (16px), Small (14px), Caption (12px), and Label (12px) remain unchanged — they are already optimized for mobile. All line heights and letter spacing remain consistent across breakpoints.
+            </div>
+        </div>
+
+        <!-- IMPLEMENTATION NOTES -->
+        <div class="section">
+            <h2>Implementation Notes</h2>
+
+            <div class="note">
+                <strong>Clash Display (Headings):</strong> Used exclusively for H1–H4 and Display. Creates premium brand presence and clear visual hierarchy. Maintains intentional, strong typography consistent with brand doctrine. Negative letter-spacing on larger sizes creates tighter, more premium appearance.
+            </div>
+
+            <div class="note">
+                <strong>Inter (Body & UI):</strong> Default sans-serif for all body copy, UI labels, captions, and supporting text. Optimized for readability and scanning. Open spacing and moderate weights ensure clarity on dark backgrounds.
+            </div>
+
+            <div class="note">
+                <strong>Line Height Strategy:</strong> Larger sizes use tighter line height (1.1–1.2) for impact; body text uses generous spacing (1.5–1.6) for readability and reduced visual density. This creates natural hierarchy without requiring size changes alone.
+            </div>
+
+            <div class="note">
+                <strong>Letter Spacing:</strong> Headline sizes use negative tracking to create premium compression. Mid-range text uses neutral spacing. UI labels use increased spacing (+0.8px) for clarity and formality. This creates visual rhythm across the scale.
+            </div>
+
+            <div class="note">
+                <strong>Dark Background Optimization:</strong> All styles tested and optimized for dark (#0A0A0A) primary background. Text colors use #F5F5F5 (primary) and #A1A1AA (secondary) for sufficient contrast and reduced eye strain. Generous line heights support readability without additional weight.
+            </div>
+
+            <div class="note">
+                <strong>Minimum Size Rule:</strong> Never use Body or smaller text below 16px in body copy, 14px in supporting text, or 12px in labels. Smaller sizes compromise readability and accessibility.
+            </div>
+
+            <div class="note">
+                <strong>Mobile Responsive Strategy:</strong> At breakpoint <768px, heading sizes scale proportionally to maintain hierarchy while preventing overwhelming headline sizes on mobile screens. Use CSS media queries to apply mobile sizes:
+                <br><br>
+                <code style="display: block; margin-top: 8px; padding: 8px; background: rgba(0,0,0,0.3); border-radius: 4px;">@media (max-width: 767px) {<br>  h1 { font-size: 36px; }<br>  h2 { font-size: 28px; }<br>  h3 { font-size: 22px; }<br>  h4 { font-size: 18px; }<br>  .lead { font-size: 18px; }<br>}</code>
+            </div>
+
+            <div class="meta">
+Document: Typography Scale v1.1<br>
+Date: May 7, 2026<br>
+Status: Approved & Locked<br>
+Font Families: 2 (Clash Display, Inter)<br>
+Scale Levels: 10 (Display, H1–H4, Lead, Body, Small, Caption, Label)<br>
+Optimization: Dark background, premium brand positioning<br>
+Responsive: 768px breakpoint with mobile scaling for headings
+            </div>
+        </div>
+    </div>
+</body>
+</html>

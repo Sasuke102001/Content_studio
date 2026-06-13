@@ -1,0 +1,268 @@
+You are designing a premium LinkedIn document carousel for Polynovea — a behavioral
+intelligence and decision infrastructure company.
+
+LinkedIn document carousels are uploaded as PDFs and displayed as square slides.
+The visual system must communicate institutional intelligence, operational maturity, and structural precision.
+
+NOT:
+- startup energy
+- music brand aesthetics
+- generic AI visuals
+- decorative clutter
+- SaaS dashboard aesthetics
+
+## FORMAT
+This is a LinkedIn document carousel.
+Each slide:
+- Width: 540px
+- Height: 540px (1:1 square ratio — LinkedIn standard)
+- Total slides: 7
+- All slides rendered as a single scrollable HTML page (stacked vertically)
+- Each slide uses class="slide"
+
+LinkedIn document carousels display slightly differently from Instagram:
+- Slightly more body text per slide is acceptable (LinkedIn audience expects depth)
+- Square format — all content must work within a 1:1 canvas
+- Professional, editorial, analytical tone throughout
+
+## COLOR SYSTEM
+Use the PRIMARY Polynovea brand palette (dark system).
+Background layers:
+- Primary background: #0A0A0A
+- Elevated surface: #121212
+- Card surface: #18181B
+- Border: #27272A
+Typography:
+- Primary text: #F5F5F5
+- Secondary text: #A1A1AA
+- Muted text: #71717A
+Accent layers:
+- Authority accent (gold): #E6D3A3
+- Muted gold: #9A8F6A
+- Depth accent (violet): #7C3AED
+
+Rules:
+- Dark backgrounds throughout — no light slides
+- Gold is the primary accent for headlines and key emphasis
+- Violet used sparingly: flow arrows on slide 5 only, and slide 3 eyebrow only
+- No pure white backgrounds
+- No gradient backgrounds
+
+## TYPOGRAPHY
+Fonts:
+- Clash Display — all headlines and eyebrow labels
+- Inter — all body copy
+
+Load via:
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=clash-display@300,400,500,600,700&display=swap" rel="stylesheet">
+
+Scale hierarchy (calibrated for 540px square):
+- Eyebrow label: Clash Display, 10px, letter-spacing: 0.18em, uppercase, muted gold (#9A8F6A)
+- Headline H1: Clash Display, 28–36px, weight 600, primary text (#F5F5F5)
+- Subheadline: Clash Display, 20px, weight 500
+- Body copy: Inter, 14px, weight 400, secondary text (#A1A1AA), line-height: 1.75
+- Handle: Inter, 11px, muted text (#71717A)
+- Slide counter: Inter, 10px, muted text (#71717A)
+
+Rules:
+- Headlines dominate the upper zone of each slide
+- Body copy: 2–4 short lines max per slide — no walls of text
+- Line height 1.75+ on body for breathing room
+- Tight letter spacing on headlines (-0.02em)
+- Never compress type to fit — remove words instead
+
+## LAYOUT SYSTEM
+Each slide internal structure:
+- Padding: 40px all sides
+- Top zone (first 80px): eyebrow label left-aligned + slide counter right-aligned
+- Mid zone: headline — left-aligned, strong visual weight
+- Lower zone: body copy and any supporting visual element
+- Bottom strip (last 20px): thin border line #27272A
+
+The 540×540px canvas must be fully utilized. No empty lower halves.
+Slide variation rules — no two consecutive slides feel identical:
+1. Full headline dominant — headline takes 60% of canvas, minimal body below
+2. Editorial split — headline top-left, structured element bottom-right
+3. Analytical — headline + mechanism visual (flow, list, status indicators)
+4. Close — centered, gold headline, strong final statement
+
+## SLIDE-BY-SIDE DESIGN DIRECTION
+SLIDE 1 — COVER / HOOK
+- Eyebrow: "IDENTITY" (muted gold)
+- Slide counter: "1 / 7" top-right
+- Background: #0A0A0A
+- Headline: Large, dominant, slightly editorial tension in the phrasing
+- Subtext below: 2 lines, secondary text color
+- Bottom-left: @polynovea in muted text
+- Bottom rule: thin gold rule (#E6D3A3) instead of border — signals this is the opening
+- Layout: Full-width headline dominant, subtext anchored below
+
+SLIDE 2 — WHAT IT IS NOT
+- Eyebrow: "NOT THIS" (muted gold)
+- Slide counter: "2 / 7"
+- Background: #121212
+- Headline: Bold declarative, 3-part structure matching the three negations
+- Body: Short paragraph below
+- Visual detail: The three "not" items can be listed with a subtle strikethrough visual or de-emphasis treatment — not colorful, just structural
+- Layout: Headline dominant upper, body mid, horizontal rule separating zones
+
+SLIDE 3 — WHAT IT IS
+- Eyebrow: "THIS" — use violet #7C3AED for this eyebrow only
+- Slide counter: "3 / 7"
+- Background: #0A0A0A
+- Headline: Gold color (#E6D3A3) for the headline text on this slide only — the only slide where headline is gold rather than white — this signals the identity statement visually
+- Body: 2 lines beneath in secondary text
+- Layout: Maximum visual weight — this is the center of gravity of the carousel
+
+SLIDE 4 — THE MARKET PROBLEM
+- Eyebrow: "THE GAP" (muted gold)
+- Slide counter: "4 / 7"
+- Background: #121212
+- Headline: Wraps to 2–3 lines — let it breathe
+- Body: 3 short analytical lines
+- Visual detail: Minimal two-column comparison structure in lower zone:
+  Left column: "Intuition-driven" → weak decisions, repeated mistakes, wasted resources
+  Right column: "Measurement-driven" → repeatable outcomes, structured intelligence
+  Style: Small card blocks in #18181B with border #27272A, 6px radius
+- Layout: Headline top, comparison cards bottom
+
+SLIDE 5 — THE MECHANISM
+- Eyebrow: "THE SYSTEM" (muted gold)
+- Slide counter: "5 / 7"
+- Background: #0A0A0A
+- Headline: Medium scale
+- Visual detail: Flow diagram — the primary element of this slide:
+  [Environments] → [Data] → [Intelligence] → [Decisions]
+  Arrow color: violet (#7C3AED) — the only other use of violet in this carousel
+  Node style: dark cards #18181B, border #27272A, gold label text
+  Position: lower 40% of slide
+- Body: 2 lines above the diagram
+- Layout: Headline mid, flow diagram anchored to bottom zone
+
+SLIDE 6 — THE PROVING GROUND
+- Eyebrow: "PHASE 1" (muted gold)
+- Slide counter: "6 / 7"
+- Background: #121212
+- Headline: Medium, operational tone
+- Body: 2–3 lines of operational explanation
+- Visual detail: Status block in lower zone — 3 items in a row:
+  [Module 1 ✓] [Module 2 ✓] [Module 3 →]
+  Style: small pill-shaped tags, gold checkmark for complete, muted arrow for in-progress
+  Location: Mumbai, India — show as a small label tag
+- Layout: Headline + body upper, status block lower
+
+SLIDE 7 — CLOSE
+- Eyebrow: "POLYNOVEA" (muted gold, 11px)
+- Slide counter: "7 / 7"
+- Background: #0A0A0A
+- Headline: Gold color (#E6D3A3) — matches slide 3, bookending the carousel
+- Body: 2 lines in secondary text
+- Bottom: @polynovea handle left, thin gold bottom rule
+- Layout: Strong close — headline centered visually, institutional feel
+
+## SLIDE COUNTER
+Each slide shows position as "X / 7" in the top-right corner.
+Style:
+- Inter, 10px, #71717A (muted)
+- Right-aligned, same vertical position as eyebrow label
+- Format: "1 / 7", "2 / 7" etc.
+
+## VISUAL DETAIL SYSTEM
+Use these to add depth without clutter:
+- Horizontal rules: 1px, #27272A — section separation within slides
+- Gold bottom rule: 1px, #E6D3A3 — slides 1 and 7 only (opening and close)
+- Card blocks: #18181B background, 1px border #27272A, 6px border-radius
+- Label tags: small rounded pill, #18181B background, 1px border, 10px Clash Display
+- Status indicators: checkmark (✓) in gold, arrow (→) in muted gold
+- Flow arrows: violet (#7C3AED), slide 5 only
+
+Avoid:
+- Stock imagery or icons
+- Gradient backgrounds
+- Drop shadows
+- Decorative elements without structural purpose
+- More than one violet element per slide
+
+## VISUAL COMPONENT LIBRARY
+When a slide's lower zone needs a "supporting visual element," use ONE of these
+content-ful patterns — adapt the numbers/labels/text to the slide's argument. Every
+pattern below renders with real content. Never substitute an empty box, placeholder
+card, or container with no text/numbers/lines inside it.
+
+1. METRIC CARD — large numeral + small label, for a single key statistic:
+<div style="background:#18181B;border:1px solid #27272A;border-radius:6px;padding:18px 20px;display:inline-block;">
+  <div style="font-family:'Clash Display';font-size:32px;font-weight:600;color:#E6D3A3;line-height:1;">3.2x</div>
+  <div style="font-family:Inter;font-size:11px;color:#A1A1AA;margin-top:6px;letter-spacing:0.05em;">Faster decision cycles</div>
+</div>
+
+2. SIGNAL BARS — row of 5-8 bars with explicit varying heights, simulating a live data readout:
+<div style="display:flex;align-items:flex-end;gap:6px;height:60px;">
+  <div style="width:8px;height:28px;background:#7C3AED;opacity:0.5;border-radius:2px;"></div>
+  <div style="width:8px;height:44px;background:#7C3AED;opacity:0.7;border-radius:2px;"></div>
+  <div style="width:8px;height:60px;background:#E6D3A3;opacity:0.9;border-radius:2px;"></div>
+  <div style="width:8px;height:36px;background:#7C3AED;opacity:0.6;border-radius:2px;"></div>
+  <div style="width:8px;height:50px;background:#7C3AED;opacity:0.8;border-radius:2px;"></div>
+</div>
+(Always set distinct height values per bar — never identical or zero-height bars.)
+
+3. FLOW ROW — 2-4 labeled nodes connected by arrows (generalizes the slide 5 mechanism diagram):
+<div style="display:flex;align-items:center;gap:10px;">
+  <div style="background:#18181B;border:1px solid #27272A;border-radius:6px;padding:10px 14px;font-family:Inter;font-size:11px;color:#E6D3A3;">Signals</div>
+  <span style="color:#7C3AED;font-size:14px;">&#8594;</span>
+  <div style="background:#18181B;border:1px solid #27272A;border-radius:6px;padding:10px 14px;font-family:Inter;font-size:11px;color:#E6D3A3;">Decisions</div>
+</div>
+
+4. STATUS ROW — pill-shaped tags with checkmark/arrow + label (generalizes the slide 6 status block):
+<div style="display:flex;gap:10px;flex-wrap:wrap;">
+  <div style="background:#18181B;border:1px solid #27272A;border-radius:20px;padding:6px 14px;font-family:Inter;font-size:11px;color:#F5F5F5;">
+    <span style="color:#E6D3A3;">&#10003;</span> Module Live
+  </div>
+  <div style="background:#18181B;border:1px solid #27272A;border-radius:20px;padding:6px 14px;font-family:Inter;font-size:11px;color:#A1A1AA;">
+    <span style="color:#9A8F6A;">&#8594;</span> In Progress
+  </div>
+</div>
+
+5. COMPARISON BLOCK — two card columns with header + 2-3 bullet lines each (generalizes the slide 4 comparison):
+<div style="display:flex;gap:12px;">
+  <div style="flex:1;background:#18181B;border:1px solid #27272A;border-radius:6px;padding:16px;">
+    <div style="font-family:'Clash Display';font-size:13px;color:#A1A1AA;margin-bottom:8px;">Before</div>
+    <div style="font-family:Inter;font-size:12px;color:#71717A;line-height:1.6;">Repeated mistakes<br/>No structure<br/>Wasted resources</div>
+  </div>
+  <div style="flex:1;background:#18181B;border:1px solid #27272A;border-radius:6px;padding:16px;">
+    <div style="font-family:'Clash Display';font-size:13px;color:#E6D3A3;margin-bottom:8px;">After</div>
+    <div style="font-family:Inter;font-size:12px;color:#F5F5F5;line-height:1.6;">Repeatable outcomes<br/>Structured intelligence<br/>Measured decisions</div>
+  </div>
+</div>
+
+6. QUOTE/CALLOUT STRIP — single emphasized line in a bordered strip with an accent edge:
+<div style="border-left:2px solid #E6D3A3;padding:12px 18px;background:#18181B;">
+  <div style="font-family:'Clash Display';font-size:16px;color:#F5F5F5;font-style:italic;">"Structure is the variable that was missing."</div>
+</div>
+
+HARD RULE — NO EMPTY CONTAINERS:
+Never output a <div> or container that has no text content, no <svg>, and no
+background-image/gradient/pattern. Every element in the lower zone must either
+(a) contain real text or numbers, or (b) be one of the Visual Component Library
+patterns above, fully populated with content. Thin 1-2px horizontal/vertical rule
+lines (the bottom strip, gold rules, section separators) are exempt — those are
+intentional structural lines, not placeholders. If a slide's content doesn't
+naturally fill the canvas, use a smaller, more centered headline-dominant layout
+(variation rule 1 or 4) rather than adding a decorative empty space-filler.
+
+## OUTPUT
+Generate a single complete HTML file with all 7 slides stacked vertically.
+Each slide is 540×540px, class="slide".
+All slides visible simultaneously for screenshot export.
+
+The HTML document must be fully complete:
+- Opening <html> and <body>
+- All 7 slides rendered
+- Closing </body> and </html>
+- No truncation
+
+Before returning, verify: no slide contains an empty placeholder div/box — every
+lower-zone element either has text/numbers or is a fully populated Visual Component
+Library pattern.
+
+Return ONLY production-ready HTML. No markdown, no code fences, no commentary.

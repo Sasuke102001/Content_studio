@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polynovea Component Library</title>
+    <link rel="preload" href="uploads/ClashDisplay-Variable.ttf" as="font" type="font/ttf" crossorigin>
+    <style>
+        @font-face {
+            font-family: "Clash Display";
+            src: url("uploads/ClashDisplay-Variable.ttf") format("truetype-variations");
+            font-weight: 200 700;
+        }
+
+        @import url('https://rsms.me/inter/inter.css');
+
+        /* ─────────────────────────────────────────────
+           DESIGN TOKENS (locked system)
+        ───────────────────────────────────────────── */
+        :root {
+            /* Dark System — Backgrounds */
+            --bg-primary:            #0A0A0A;
+            --bg-secondary:          #121212;
+            --bg-card:               #18181B;
+            --border-muted:          #27272A;
+            --border-active:         #7C3AED;
+
+            /* Dark System — Typography */
+            --text-primary:          #F5F5F5;
+            --text-secondary:        #A1A1AA;
+            --text-disabled:         #71717A;
+
+            /* Dark System — Accents */
+            --accent-authority:      #E6D3A3;
+            --accent-authority-muted:#9A8F6A;
+            --accent-authority-hover:#F0DFB8;
+            --accent-intelligence:   #7C3AED;
+
+            /* Light System — Signals (dark-context equivalents) */
+            --signal-active-dark:    #E6D3A3;   /* gold — no green on dark */
+            --signal-progress-dark:  #9A8F6A;   /* muted gold */
+            --signal-positive:       #059669;
+            --signal-warning:        #D97706;
+            --signal-risk:           #DC2626;
+
+            /* Spacing */
+            --space-xs:   4px;
+            --space-sm:   8px;
+            --space-md:   16px;
+            --space-lg:   24px;
+            --space-xl:   32px;
+            --space-2xl:  48px;
+            --space-3xl:  64px;
+            --space-4xl:  80px;
+
+            /* Motion */
+            --duration-fast:    150ms;
+            --duration-default: 300ms;
+            --ease-state:       ease-in-out;
+            --ease-enter:       ease-out;
+        }
+
+        /* ─────────────────────────────────────────────
+           BASE RESET
+        ───────────────────────────────────────────── */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { font-family: 'Inter', sans-serif; }
+
+        body {
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            padding: var(--space-4xl);
+            line-height: 1.6;
+        }
+
+        /* ─────────────────────────────────────────────
+           DOCUMENTATION CHROME
+        ───────────────────────────────────────────── */
+        .container { max-width: 1200px; margin: 0 auto; }
+
+        .doc-header {
+            margin-bottom: var(--space-4xl);
+            border-bottom: 1px solid var(--border-muted);
+            padding-bottom: var(--space-3xl);
+        }
+
+        .doc-title {
+            font-family: "Clash Display", sans-serif;
+            font-size: 56px;
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1.2;
+            letter-spacing: -0.8px;
+            margin-bottom: var(--space-md);
+        }
+
+        .doc-subtitle {
+            font-size: 18px;
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+
+        .component-section {
+            margin-bottom: var(--space-4xl);
+            padding-bottom: var(--space-4xl);
+            border-bottom: 1px solid var(--border-muted);
+        }
+
+        .component-section:last-child {
+            border-bottom: none;
+        }
+
+        .section-heading {
+            font-family: "Clash Display", sans-serif;
+            font-size: 40px;
+            font-weight: 600;
+            color: var(--accent-authority);
+            line-height: 1.2;
+            letter-spacing: -0.4px;
+            margin-bottom: var(--space-sm);
+        }
+
+        .section-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: var(--space-2xl);
+            line-height: 1.5;
+        }
+
+        .component-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: var(--text-disabled);
+            margin-bottom: var(--space-md);
+        }
+
+        .variant-group {
+            margin-bottom: var(--space-2xl);
+        }
+
+        .canvas {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-muted);
+            border-radius: 8px;
+            padding: var(--space-2xl);
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-lg);
+            align-items: flex-start;
+        }
+
+        .canvas.center {
+            justify-content: center;
+            align-items: center;
+        }
+
+        .canvas.dark-inset {
+            background: var(--bg-primary);
+        }
+
+        /* ─────────────────────────────────────────────
+           COMPONENT 1 — BUTTONS
+        ───────────────────────────────────────────── */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-sm);
+            padding: 12px var(--space-lg);
+            border-radius: 4px;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            cursor: pointer;
+            border: 1px solid transparent;
+            text-decoration: none;
+            transition: background-color var(--duration-fast) var(--ease-state),
+                        border-color     var(--duration-fast) var(--ease-state),
+                        color            var(--duration-fast) var(--ease-state),
+                        filter           var(--duration-fast) var(--ease-state);
+        }
+
+        /* Primary */
+        .btn-primary {
+            background: var(--accent-authority);
+            color: var(--bg-primary);
+            border-color: var(--accent-authority);
+        }
+        .btn-primary:hover {
+            filter: brightness(1.1);
+        }
+        .btn-primary:focus-visible {
+            outline: 2px solid var(--border-active);
+            outline-offset: 3px;
+        }
+
+        /* Secondary */
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent-authority);
+            border-color: var(--accent-authority);
+        }
+        .btn-secondary:hover {
+            background: rgba(230, 211, 163, 0.08);
+            border-color: var(--accent-authority-hover);
+            color: var(--accent-authority-hover);
+        }
+        .btn-secondary:focus-visible {
+            outline: 2px solid var(--border-active);
+            outline-offset: 3px;
+        }
+
+        /* Ghost */
+        .btn-ghost {
+            background: transparent;
+            color: var(--text-secondary);
+            border-color: var(--border-muted);
+        }
+        .btn-ghost:hover {
+            border-color: var(--text-secondary);
+            color: var(--text-primary);
+            background: rgba(245, 245, 245, 0.04);
+        }
+        .btn-ghost:focus-visible {
+            outline: 2px solid var(--border-active);
+            outline-offset: 3px;
+        }
+
+        .btn-hover-label {
+            font-size: 12px;
+            color: var(--text-disabled);
+            margin-top: var(--space-sm);
+        }
+
+        /* ─────────────────────────────────────────────
+           COMPONENT 2 — CARDS
+        ───────────────────────────────────────────── */
+
+        /* Project Card */
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-muted);
+            border-radius: 8px;
+            overflow: hidden;
+            width: 320px;
+            transition: border-color var(--duration-fast) var(--ease-state),
+                        box-shadow   var(--duration-fast) var(--ease-state);
+            cursor: pointer;
+        }
+        .project-card:hover {
+            border-color: var(--accent-intelligence);
+            box-shadow: 0 8px 24px rgba(124, 58, 237, 0.15);
+        }
+
+        .project-card-image {
+            width: 100%;
+            height: 180px;
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border-muted);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .image-placeholder {
+            width: 56px;
+            height: 56px;
+            border: 1px solid var(--border-muted);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .image-placeholder svg {
+            opacity: 0.3;
+        }
+
+        .project-card-body {
+            padding: var(--space-md);
+        }
+
+        .project-card-tag {
+            display: inline-block;
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: var(--accent-authority-muted);
+            margin-bottom: var(--space-sm);
+        }
+
+        .project-card-title {
+            font-family: "Clash Display", sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--text-primary);
+            line-height: 1.4;
+            letter-spacing: 0.3px;
+            margin-bottom: var(--space-sm);
+        }
+
+        .project-card-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            margin-bottom: var(--space-md);
+        }
+
+        .project-card-link {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--accent-authority);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+            transition: color var(--duration-fast) var(--ease-state),
+                        filter var(--duration-fast) var(--ease-state);
+        }
+        .project-card-link:hover {
+            filter: brightness(1.1);
+        }
+
+        /* Milestone Card */
+        .milestone-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-muted);
+            border-radius: 8px;
+            padding: var(--space-xl);
+            width: 380px;
+            transition: border-color var(--duration-fast) var(--ease-state),
+                        box-shadow   var(--duration-fast) var(--ease-state);
+        }
+        .milestone-card:hover {
+            border-color: var(--accent-intelligence);
+            box-shadow: 0 8px 24px rgba(124, 58, 237, 0.15);
+        }
+
+        .milestone-card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: var(--space-md);
+            margin-bottom: var(--space-md);
+        }
+
+        .milestone-number {
+            font-family: "Clash Display", sans-serif;
+            font-size: 56px;
+            font-weight: 700;
+            line-height: 1;
+            color: var(--accent-authority);
+            opacity: 0.35;
+            letter-spacing: -1.2px;
+        }
+
+        .milestone-card-title {
+            font-family: "Clash Display", sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--text-primary);
+            line-height: 1.4;
+            letter-spacing: 0.3px;
+            margin-bottom: var(--space-sm);
+        }
+
+        .milestone-card-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        /* ─────────────────────────────────────────────
+           COMPONENT 3 — STATUS BADGES
+        ───────────────────────────────────────────── */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.4px;
+            border: 1px solid transparent;
+            line-height: 1.4;
+        }
+
+        .badge-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        /* Active — gold on dark */
+        .badge-active {
+            background: rgba(230, 211, 163, 0.12);
+            color: var(--accent-authority);
+            border-color: rgba(230, 211, 163, 0.25);
+        }
+        .badge-active .badge-dot { background: var(--accent-authority); }
+
+        /* In Progress — muted gold on dark */
+        .badge-progress {
+            background: rgba(154, 143, 106, 0.12);
+            color: var(--accent-authority-muted);
+            border-color: rgba(154, 143, 106, 0.25);
+        }
+        .badge-progress .badge-dot { background: var(--accent-authority-muted); }
+
+        /* Planned — muted/disabled */
+        .badge-planned {
+            background: rgba(113, 113, 122, 0.1);
+            color: var(--text-disabled);
+            border-color: rgba(113, 113, 122, 0.2);
+        }
+        .badge-planned .badge-dot { background: var(--text-disabled); }
+
+        /* Long-term — intelligence violet */
+        .badge-longterm {
+            background: rgba(124, 58, 237, 0.12);
+            color: var(--accent-intelligence);
+            border-color: rgba(124, 58, 237, 0.25);
+        }
+        .badge-longterm .badge-dot { background: var(--accent-intelligence); }
+
+        /* ─────────────────────────────────────────────
+           COMPONENT 4 — NAVIGATION BAR
+        ───────────────────────────────────────────── */
+        .navbar {
+            background: var(--bg-primary);
+            border-bottom: 1px solid var(--border-muted);
+            padding: 0 var(--space-4xl);
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            position: relative;
+        }
+
+        .navbar-logo {
+            font-family: "Clash Display", sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-primary);
+            letter-spacing: -0.3px;
+            text-decoration: none;
+            flex-shrink: 0;
+        }
+
+        .navbar-logo span {
+            color: var(--accent-authority);
+        }
+
+        .navbar-links {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xl);
+            list-style: none;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .navbar-links a {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            text-decoration: none;
+            letter-spacing: 0.2px;
+            transition: color var(--duration-fast) var(--ease-state);
+        }
+
+        .navbar-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .navbar-links a.active {
+            color: var(--accent-authority);
+        }
+
+        .navbar-cta {
+            flex-shrink: 0;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: var(--space-sm);
+        }
+
+        .hamburger span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: var(--text-secondary);
+            border-radius: 2px;
+            transition: all var(--duration-fast) var(--ease-state);
+        }
+
+        .hamburger:hover span {
+            background: var(--text-primary);
+        }
+
+        /* Mobile nav overlay */
+        .mobile-menu {
+            display: none;
+            position: absolute;
+            top: 64px;
+            left: 0;
+            right: 0;
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border-muted);
+            padding: var(--space-lg) var(--space-xl);
+            flex-direction: column;
+            gap: var(--space-md);
+            z-index: 100;
+        }
+
+        .mobile-menu.open {
+            display: flex;
+        }
+
+        .mobile-menu a {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: var(--space-sm) 0;
+            border-bottom: 1px solid var(--border-muted);
+            transition: color var(--duration-fast) var(--ease-state);
+        }
+
+        .mobile-menu a:last-child {
+            border-bottom: none;
+        }
+
+        .mobile-menu a:hover,
+        .mobile-menu a.active {
+            color: var(--accent-authority);
+        }
+
+        /* Responsive: show hamburger on small viewports */
+        .navbar-demo-wrapper {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-muted);
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .navbar-demo-wrapper .resize-note {
+            background: rgba(124, 58, 237, 0.08);
+            border-top: 1px solid var(--border-muted);
+            padding: var(--space-sm) var(--space-md);
+            font-size: 12px;
+            color: var(--text-disabled);
+        }
+
+        /* ─────────────────────────────────────────────
+           COMPONENT 5 — CONTACT FORM
+        ───────────────────────────────────────────── */
+        .form-wrapper {
+            background: var(--bg-card);
+            border: 1px solid var(--border-muted);
+            border-radius: 8px;
+            padding: var(--space-2xl);
+            max-width: 560px;
+        }
+
+        .form-title {
+            font-family: "Clash Display", sans-serif;
+            font-size: 28px;
+            font-weight: 600;
+            color: var(--text-primary);
+            line-height: 1.3;
+            letter-spacing: 0px;
+            margin-bottom: var(--space-sm);
+        }
+
+        .form-subtitle {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: var(--space-2xl);
+            line-height: 1.5;
+        }
+
+        .form-fields {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-xs);
+        }
+
+        .form-group-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-md);
+        }
+
+        .form-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: var(--text-disabled);
+            line-height: 1.4;
+        }
+
+        .form-input,
+        .form-select,
+        .form-textarea {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-muted);
+            border-radius: 4px;
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 1.5;
+            padding: 12px var(--space-md);
+            outline: none;
+            transition: border-color var(--duration-fast) var(--ease-state),
+                        box-shadow   var(--duration-fast) var(--ease-state);
+            width: 100%;
+            -webkit-appearance: none;
+        }
+
+        .form-input::placeholder,
+        .form-textarea::placeholder {
+            color: var(--text-disabled);
+        }
+
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            border-color: var(--border-active);
+            box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.15);
+        }
+
+        .form-select {
+            cursor: pointer;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 24 24'%3E%3Cpath stroke='%2371717A' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            padding-right: 36px;
+        }
+
+        .form-select option {
+            background: var(--bg-card);
+            color: var(--text-primary);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-submit {
+            margin-top: var(--space-md);
+        }
+
+        /* ─────────────────────────────────────────────
+           UTILITY: HOVER STATE DEMO LABELS
+        ───────────────────────────────────────────── */
+        .state-row {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+            align-items: flex-start;
+        }
+
+        .state-label {
+            font-size: 11px;
+            color: var(--text-disabled);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+
+        .forced-hover-btn-primary {
+            background: var(--accent-authority);
+            color: var(--bg-primary);
+            border-color: var(--accent-authority);
+            filter: brightness(1.1);
+        }
+
+        .forced-hover-btn-secondary {
+            background: rgba(230, 211, 163, 0.08);
+            border-color: var(--accent-authority-hover);
+            color: var(--accent-authority-hover);
+        }
+
+        .forced-hover-btn-ghost {
+            border-color: var(--text-secondary);
+            color: var(--text-primary);
+            background: rgba(245, 245, 245, 0.04);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                transition-duration: 0.01ms !important;
+                animation-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <header class="doc-header">
+            <h1 class="doc-title">Polynovea Component Library</h1>
+            <p class="doc-subtitle">Five production-ready components built on locked design system tokens. All hover states visible.</p>
+        </header>
+
+        <!-- ─────────────────────────────────────────
+             COMPONENT 1 — BUTTONS
+        ──────────────────────────────────────────── -->
+        <section class="component-section">
+            <h2 class="section-heading">01 — Buttons</h2>
+            <p class="section-desc">Three variants. 150ms hover transitions. No scale transforms.</p>
+
+            <!-- Default States -->
+            <div class="variant-group">
+                <div class="component-label">Default State</div>
+                <div class="canvas center">
+                    <div class="state-row">
+                        <span class="state-label">Primary</span>
+                        <button class="btn btn-primary">Get Started</button>
+                    </div>
+                    <div class="state-row">
+                        <span class="state-label">Secondary</span>
+                        <button class="btn btn-secondary">Learn More</button>
+                    </div>
+                    <div class="state-row">
+                        <span class="state-label">Ghost</span>
+                        <button class="btn btn-ghost">View Details</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hover States -->
+            <div class="variant-group">
+                <div class="component-label">Hover State (forced)</div>
+                <div class="canvas center">
+                    <div class="state-row">
+                        <span class="state-label">Primary hover</span>
+                        <button class="btn btn-primary forced-hover-btn-primary">Get Started</button>
+                    </div>
+                    <div class="state-row">
+                        <span class="state-label">Secondary hover</span>
+                        <button class="btn btn-secondary forced-hover-btn-secondary">Learn More</button>
+                    </div>
+                    <div class="state-row">
+                        <span class="state-label">Ghost hover</span>
+                        <button class="btn btn-ghost forced-hover-btn-ghost">View Details</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─────────────────────────────────────────
+             COMPONENT 2 — CARDS
+        ──────────────────────────────────────────── -->
+        <section class="component-section">
+            <h2 class="section-heading">02 — Cards</h2>
+            <p class="section-desc">Two variants. Border shifts to accent-intelligence on hover.</p>
+
+            <div class="variant-group">
+                <div class="component-label">Project Card</div>
+                <div class="canvas dark-inset">
+                    <!-- Default -->
+                    <div>
+                        <span class="state-label" style="display:block; margin-bottom: var(--space-sm);">Default</span>
+                        <div class="project-card">
+                            <div class="project-card-image">
+                                <div class="image-placeholder">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <rect x="3" y="3" width="18" height="18" rx="2" stroke="#A1A1AA" stroke-width="1.5"/>
+                                        <path d="M3 9l5-4 4 4 5-5 4 5" stroke="#A1A1AA" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <circle cx="8" cy="7" r="1.5" fill="#A1A1AA"/>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="project-card-body">
+                                <span class="project-card-tag">Intelligence</span>
+                                <div class="project-card-title">Decision Engine</div>
+                                <p class="project-card-desc">Determines opportunity viability, pricing logic, and expected outcomes for every engagement.</p>
+                                <a href="#" class="project-card-link">
+                                    View Project
+                                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                                        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Hover State -->
+                    <div>
+                        <span class="state-label" style="display:block; margin-bottom: var(--space-sm);">Hover</span>
+                        <div class="project-card" style="border-color: var(--accent-intelligence); box-shadow: 0 8px 24px rgba(124,58,237,0.15);">
+                            <div class="project-card-image">
+                                <div class="image-placeholder">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <rect x="3" y="3" width="18" height="18" rx="2" stroke="#A1A1AA" stroke-width="1.5"/>
+                                        <path d="M3 9l5-4 4 4 5-5 4 5" stroke="#A1A1AA" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <circle cx="8" cy="7" r="1.5" fill="#A1A1AA"/>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="project-card-body">
+                                <span class="project-card-tag">Intelligence</span>
+                                <div class="project-card-title">Decision Engine</div>
+                                <p class="project-card-desc">Determines opportunity viability, pricing logic, and expected outcomes for every engagement.</p>
+                                <a href="#" class="project-card-link">
+                                    View Project
+                                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                                        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="variant-group">
+                <div class="component-label">Milestone Card</div>
+                <div class="canvas dark-inset">
+                    <!-- Default -->
+                    <div>
+                        <span class="state-label" style="display:block; margin-bottom: var(--space-sm);">Default</span>
+                        <div class="milestone-card">
+                            <div class="milestone-card-header">
+                                <div>
+                                    <div class="milestone-card-title">Behavioral Intelligence Engine</div>
+                                    <span class="badge badge-progress" style="margin-top: 6px;">
+                                        <span class="badge-dot"></span>
+                                        In Progress
+                                    </span>
+                                </div>
+                                <div class="milestone-number">02</div>
+                            </div>
+                            <p class="milestone-card-desc">Transforms raw behavioral observations into structured operational frameworks and repeatable decision playbooks.</p>
+                        </div>
+                    </div>
+                    <!-- Hover State -->
+                    <div>
+                        <span class="state-label" style="display:block; margin-bottom: var(--space-sm);">Hover</span>
+                        <div class="milestone-card" style="border-color: var(--accent-intelligence); box-shadow: 0 8px 24px rgba(124,58,237,0.15);">
+                            <div class="milestone-card-header">
+                                <div>
+                                    <div class="milestone-card-title">Behavioral Intelligence Engine</div>
+                                    <span class="badge badge-progress" style="margin-top: 6px;">
+                                        <span class="badge-dot"></span>
+                                        In Progress
+                                    </span>
+                                </div>
+                                <div class="milestone-number">02</div>
+                            </div>
+                            <p class="milestone-card-desc">Transforms raw behavioral observations into structured operational frameworks and repeatable decision playbooks.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─────────────────────────────────────────
+             COMPONENT 3 — STATUS BADGES
+        ──────────────────────────────────────────── -->
+        <section class="component-section">
+            <h2 class="section-heading">03 — Status Badges</h2>
+            <p class="section-desc">Four states. Gold replaces green on dark backgrounds. Violet for long-term horizon.</p>
+
+            <div class="variant-group">
+                <div class="component-label">All States</div>
+                <div class="canvas center">
+                    <div class="state-row">
+                        <span class="state-label">Active</span>
+                        <span class="badge badge-active">
+                            <span class="badge-dot"></span>
+                            Active
+                        </span>
+                    </div>
+                    <div class="state-row">
+                        <span class="state-label">In Progress</span>
+                        <span class="badge badge-progress">
+                            <span class="badge-dot"></span>
+                            In Progress
+                        </span>
+                    </div>
+                    <div class="state-row">
+                        <span class="state-label">Planned</span>
+                        <span class="badge badge-planned">
+                            <span class="badge-dot"></span>
+                            Planned
+                        </span>
+                    </div>
+                    <div class="state-row">
+                        <span class="state-label">Long-term</span>
+                        <span class="badge badge-longterm">
+                            <span class="badge-dot"></span>
+                            Long-term
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─────────────────────────────────────────
+             COMPONENT 4 — NAVIGATION BAR
+        ──────────────────────────────────────────── -->
+        <section class="component-section">
+            <h2 class="section-heading">04 — Navigation Bar</h2>
+            <p class="section-desc">Logo left, links center, CTA right. Active link uses accent-authority. Mobile hamburger.</p>
+
+            <div class="component-label">Desktop Navigation</div>
+            <div class="navbar-demo-wrapper" style="margin-bottom: var(--space-xl);">
+                <nav class="navbar" id="main-nav">
+                    <a href="#" class="navbar-logo">Poly<span>novea</span></a>
+                    <ul class="navbar-links" id="nav-links">
+                        <li><a href="#" class="active">Ecosystem</a></li>
+                        <li><a href="#">Intelligence</a></li>
+                        <li><a href="#">Records</a></li>
+                        <li><a href="#">Insights</a></li>
+                    </ul>
+                    <div class="navbar-cta">
+                        <button class="btn btn-primary" style="padding: 9px var(--space-md); font-size: 13px;">Request Access</button>
+                    </div>
+                    <button class="hamburger" id="hamburger-btn" aria-label="Toggle menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </nav>
+                <div class="mobile-menu" id="mobile-menu">
+                    <a href="#" class="active">Ecosystem</a>
+                    <a href="#">Intelligence</a>
+                    <a href="#">Records</a>
+                    <a href="#">Insights</a>
+                    <button class="btn btn-primary" style="width: 100%; justify-content: center; margin-top: var(--space-sm);">Request Access</button>
+                </div>
+                <div class="resize-note">Desktop: logo left · links centered · CTA right &nbsp;|&nbsp; Mobile: hamburger triggers overlay menu</div>
+            </div>
+
+            <div class="component-label" style="margin-top: var(--space-2xl);">Mobile State (hamburger open)</div>
+            <div class="navbar-demo-wrapper" style="max-width: 400px;">
+                <nav class="navbar" style="padding: 0 var(--space-xl);">
+                    <a href="#" class="navbar-logo">Poly<span>novea</span></a>
+                    <button class="hamburger" style="display:flex;">
+                        <span style="transform: rotate(45deg) translate(5px, 5px);"></span>
+                        <span style="opacity: 0;"></span>
+                        <span style="transform: rotate(-45deg) translate(5px, -5px);"></span>
+                    </button>
+                </nav>
+                <div class="mobile-menu" style="display:flex;">
+                    <a href="#" class="active">Ecosystem</a>
+                    <a href="#">Intelligence</a>
+                    <a href="#">Records</a>
+                    <a href="#">Insights</a>
+                    <button class="btn btn-primary" style="width: 100%; justify-content: center; margin-top: var(--space-sm);">Request Access</button>
+                </div>
+                <div class="resize-note">Mobile navigation — menu open state</div>
+            </div>
+        </section>
+
+        <!-- ─────────────────────────────────────────
+             COMPONENT 5 — CONTACT FORM
+        ──────────────────────────────────────────── -->
+        <section class="component-section">
+            <h2 class="section-heading">05 — Contact Form</h2>
+            <p class="section-desc">POST method. Labels use Label typography style. Input focus state uses border-active (violet).</p>
+
+            <div class="component-label">Form — Default & Focus States</div>
+            <div class="canvas dark-inset" style="flex-direction: column; align-items: flex-start; gap: var(--space-2xl);">
+
+                <!-- Default Form -->
+                <div>
+                    <span class="state-label" style="display:block; margin-bottom: var(--space-md);">Default</span>
+                    <div class="form-wrapper">
+                        <div class="form-title">Get in Touch</div>
+                        <p class="form-subtitle">Reach out to discuss the ecosystem, explore opportunities, or request access.</p>
+                        <form method="POST" action="#" class="form-fields">
+                            <div class="form-group-row">
+                                <div class="form-group">
+                                    <label class="form-label" for="name-default">Name</label>
+                                    <input class="form-input" type="text" id="name-default" placeholder="Roy Alam" autocomplete="name">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="email-default">Email</label>
+                                    <input class="form-input" type="email" id="email-default" placeholder="hello@polynovea.com" autocomplete="email">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="inquiry-default">Inquiry Type</label>
+                                <select class="form-select" id="inquiry-default">
+                                    <option value="" disabled selected>Select inquiry type</option>
+                                    <option value="ecosystem">Ecosystem Overview</option>
+                                    <option value="intelligence">Intelligence Infrastructure</option>
+                                    <option value="records">Polynovea Records</option>
+                                    <option value="partnership">Partnership Opportunity</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="message-default">Message</label>
+                                <textarea class="form-textarea" id="message-default" placeholder="Describe your inquiry or interest..."></textarea>
+                            </div>
+                            <div class="form-submit">
+                                <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Send Message</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Focus State Demo -->
+                <div>
+                    <span class="state-label" style="display:block; margin-bottom: var(--space-md);">Focus State (violet border-active)</span>
+                    <div class="form-wrapper" style="max-width: 380px;">
+                        <form class="form-fields">
+                            <div class="form-group">
+                                <label class="form-label">Email (focused)</label>
+                                <input class="form-input" type="email" value="hello@polynovea.com"
+                                    style="border-color: var(--border-active); box-shadow: 0 0 0 3px rgba(124,58,237,0.15);">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Message (focused)</label>
+                                <textarea class="form-textarea" style="border-color: var(--border-active); box-shadow: 0 0 0 3px rgba(124,58,237,0.15); min-height: 80px;">Describing an inquiry...</textarea>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        // Hamburger toggle for demo nav
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const spans = hamburgerBtn ? hamburgerBtn.querySelectorAll('span') : [];
+
+        if (hamburgerBtn && mobileMenu) {
+            hamburgerBtn.addEventListener('click', () => {
+                const isOpen = mobileMenu.classList.toggle('open');
+                // Animate hamburger to X
+                if (isOpen) {
+                    spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                    spans[1].style.opacity = '0';
+                    spans[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
+                } else {
+                    spans[0].style.transform = '';
+                    spans[1].style.opacity = '';
+                    spans[2].style.transform = '';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
